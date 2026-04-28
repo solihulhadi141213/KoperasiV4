@@ -1,69 +1,125 @@
 <?php
-    //Menangkap seasson kemudian menampilkannya
+    // Session Start (opsional, masih dipakai untuk notifikasi swal)
     session_start();
-    date_default_timezone_set('Asia/Jakarta');
-    if(empty($_SESSION["id_akses"])){
-        $SessionIdAkses="";
-        $SessionModeAkses="";
-        $SessionLoginToken="";
-    }else{
-        if(empty($_SESSION["login_token"])){
-            $SessionIdAkses="";
-            $SessionModeAkses="";
-            $SessionLoginToken="";
-        }else{
-            if(empty($_SESSION["mode_akses"])){
-                $SessionIdAkses="";
-                $SessionModeAkses="";
-                $SessionLoginToken="";
-            }else{
-                $SessionIdAkses=$_SESSION ["id_akses"];
-                $SessionModeAkses=$_SESSION ["mode_akses"];
-                $SessionLoginToken=$_SESSION ["login_token"];
-                //Membersihkan Variabel
-                $SessionIdAkses=validateAndSanitizeInput($SessionIdAkses);
-                $SessionModeAkses=validateAndSanitizeInput($SessionModeAkses);
-                $SessionLoginToken=validateAndSanitizeInput($SessionLoginToken);
-                //Validasi Token Akses
-                $QryAksesLogin = mysqli_query($Conn,"SELECT * FROM akses_login WHERE id_akses='$SessionIdAkses' AND token='$SessionLoginToken' AND kategori='$SessionModeAkses'")or die(mysqli_error($Conn));
-                $DataAksesLogin = mysqli_fetch_array($QryAksesLogin);
-                //Apabila Tidak Ada
-                if(empty($DataAksesLogin['id_akses'])){
-                    $SessionIdAkses="";
-                    $SessionModeAkses="";
-                    $SessionLoginToken="";
-                }else{
-                    //Apabila Ada
-                    $SessionDateCreat=$DataAksesLogin['date_creat'];
-                    //Validasi Apakah Token Masih Berlaku Atau Tidak
-                    $SessionDateExpired=$DataAksesLogin['date_expired'];
-                    $DateSekarang=date('Y-m-d H:i:s');
-                    if($SessionDateExpired<$DateSekarang){
-                        $SessionIdAkses="";
-                        $SessionModeAkses="";
-                        $SessionLoginToken="";
-                    }else{
-                        $SessionIdAkses=$DataAksesLogin['id_akses'];
-                        $SessionModeAkses=$DataAksesLogin['kategori'];
-                        $expired_milisecond=1000*60*60;
-                        $now=date('Y-m-d H:i:s');
-                        $date_expired_new=calculateExpirationTimeFromDateTime($now, $expired_milisecond);
-                        //Update Token Yang Ada
-                        $UpdateToken = mysqli_query($Conn,"UPDATE akses_login SET 
-                            date_expired='$date_expired_new'
-                        WHERE id_akses='$SessionIdAkses' AND kategori='$SessionModeAkses'") or die(mysqli_error($Conn)); 
-                        if($UpdateToken){
-                            $SessionIdAkses=$DataAksesLogin['id_akses'];
-                            $SessionModeAkses=$DataAksesLogin['kategori'];
-                            $SessionLoginToken=$DataAksesLogin['token'];
-                        }else{
-                            $SessionIdAkses="";
-                            $SessionModeAkses="";
-                            $SessionLoginToken="";
-                        }
+
+    // Default Variabel
+    $SessionIdAkses          = "";
+    $SessionNama             = "";
+    $SessionEmail            = "";
+    $SessionKontak           = "";
+    $SessionAkses            = "";
+    $SessionGambar           = "";
+    $SessionUpdatetime       = "";
+    $SessionDateExpired      = "";
+    $SessionToken            = "";
+
+    // Ambil cookie
+    $CookieIdAkses = $_COOKIE['id_akses'] ?? "";
+    $CookieToken   = $_COOKIE['login_token'] ?? "";
+
+    // Jika cookie tersedia
+    if (!empty($CookieIdAkses) && !empty($CookieToken)) {
+
+        $id_akses = $CookieIdAkses;
+        $token    = $CookieToken;
+
+        // Validasi token
+        $stmtLogin = mysqli_prepare($Conn, "SELECT id_akses_login, date_expired FROM akses_login WHERE id_akses = ? AND token = ? LIMIT 1");
+        mysqli_stmt_bind_param($stmtLogin, "is", $id_akses, $token);
+        mysqli_stmt_execute($stmtLogin);
+        $resultLogin    = mysqli_stmt_get_result($stmtLogin);
+        $DataAksesLogin = mysqli_fetch_array($resultLogin, MYSQLI_ASSOC);
+        mysqli_stmt_close($stmtLogin);
+
+        // Jika token ditemukan
+        if (!empty($DataAksesLogin['id_akses_login'])) {
+
+            $expired_at   = $DataAksesLogin['date_expired'];
+            $utc          = new DateTime('now', new DateTimeZone('UTC'));
+            $DateSekarang = $utc->format('Y-m-d H:i:s');
+
+            // Validasi token belum expired
+            if ($expired_at >= $DateSekarang) {
+
+                // Perpanjang masa aktif token 1 jam
+                $expired_second = 60 * 60;
+                $utcNew         = new DateTime($DateSekarang, new DateTimeZone('UTC'));
+                $utcNew->modify("+{$expired_second} seconds");
+                $date_expired_new = $utcNew->format('Y-m-d H:i:s');
+
+                // Update expired token di database
+                $stmtUpdateToken = mysqli_prepare($Conn,"UPDATE akses_login SET date_expired = ? WHERE id_akses = ?");
+                mysqli_stmt_bind_param(
+                    $stmtUpdateToken,
+                    "si",
+                    $date_expired_new,
+                    $id_akses
+                );
+                $UpdateToken = mysqli_stmt_execute($stmtUpdateToken);
+                mysqli_stmt_close($stmtUpdateToken);
+
+                // Update masa berlaku cookie juga
+                if ($UpdateToken) {
+
+                    $cookieOptions = [
+                        'expires'  => time() + $expired_second,
+                        'path'     => '/',
+                        'secure'   => false,
+                        'httponly' => true,
+                        'samesite' => 'Lax'
+                    ];
+
+                    setcookie("id_akses", $id_akses, $cookieOptions);
+                    setcookie("login_token", $token, $cookieOptions);
+
+                    // Ambil data user
+                    $stmtSessionAkses = mysqli_prepare($Conn,"SELECT * FROM akses WHERE id_akses = ? LIMIT 1");
+                    mysqli_stmt_bind_param(
+                        $stmtSessionAkses,
+                        "i",
+                        $id_akses
+                    );
+
+                    mysqli_stmt_execute($stmtSessionAkses);
+
+                    $resultSessionAkses = mysqli_stmt_get_result($stmtSessionAkses);
+                    $DataSessionAkses = mysqli_fetch_array(
+                        $resultSessionAkses,
+                        MYSQLI_ASSOC
+                    );
+
+                    mysqli_stmt_close($stmtSessionAkses);
+
+                    if (!empty($DataSessionAkses['nama_akses'])) {
+
+                        $SessionIdAkses          = $DataSessionAkses['id_akses'];
+                        $SessionNama             = $DataSessionAkses['nama_akses'];
+                        $SessionEmail            = $DataSessionAkses['email'];
+                        $SessionKontak           = $DataSessionAkses['kontak_akses'];
+                        $SessionAkses            = $DataSessionAkses['akses'];
+                        $SessionGambar           = $DataSessionAkses['image_akses'];
+                        $SessionUpdatetime       = $DataSessionAkses['datetime_update'];
+                        $SessionDateExpired      = $date_expired_new;
+                        $SessionToken            = $token;
                     }
+
                 }
+
+            } else {
+
+                // Jika token expired hapus cookie
+                setcookie("id_akses", "", time() - 3600, "/");
+                setcookie("login_token", "", time() - 3600, "/");
+
             }
+
+        } else {
+
+            // Jika token tidak valid hapus cookie
+            setcookie("id_akses", "", time() - 3600, "/");
+            setcookie("login_token", "", time() - 3600, "/");
+
         }
+
     }
 ?>
