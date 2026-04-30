@@ -22,14 +22,14 @@
                         <i class="bi bi-file-earmark-x display-1 text-warning"></i>
                     </div>
 
-                    <h1 class="fw-bold text-muted mb-3">404</h1>
+                    <h1 class="fw-bold text-muted mb-3">401</h1>
 
                     <h5 class="mb-3">
-                        Oops! Halaman tidak ditemukan
+                        Oops! Anda Tidak Memiliki Akses Masuk Ke Halaman ini
                     </h5>
 
                     <p class="text-muted mb-4">
-                        Maaf, halaman yang Anda akses tidak tersedia.<br>
+                        Maaf, halaman yang Anda akses tidak memiliki ijin.<br>
                         Silakan kembali ke dashboard atau periksa kembali menu yang Anda pilih.
                     </p>
 

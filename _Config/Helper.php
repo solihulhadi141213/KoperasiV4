@@ -103,4 +103,26 @@
             return $Data[$Colom];
         }
     }
+
+    function IjinAksesSaya($Conn, $SessionIdAkses, $KodeFitur){
+        $sql = "
+            SELECT 1 
+            FROM akses_ijin ai
+            INNER JOIN akses_fitur af ON ai.id_akses_fitur = af.id_akses_fitur
+            WHERE ai.id_akses = ? 
+            AND af.kode = ?
+            LIMIT 1
+        ";
+
+        $stmt = mysqli_prepare($Conn, $sql);
+        mysqli_stmt_bind_param($stmt, "is", $SessionIdAkses, $KodeFitur);
+        mysqli_stmt_execute($stmt);
+        mysqli_stmt_store_result($stmt);
+
+        if(mysqli_stmt_num_rows($stmt) > 0){
+            return "Ada";
+        }else{
+            return "Tidak Ada";
+        }
+    }
 ?>

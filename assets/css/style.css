@@ -234,9 +234,13 @@ h6 {
   background-color: #d3d3d4;
   border-color: #d3d3d4;
 }
-.login_background {
-  background: #1c3b67;
-}
+
+  /* LOGIN BACKGROUND */
+  .login_background {
+    background: linear-gradient(135deg, #0f0f0f, #1f1f2e, #2b2d42);
+  }
+
+
 .nav_background {
   background: rgb(28,59,103);
   background: linear-gradient(90deg, rgba(28,59,103,1) 0%, rgba(10,40,83,1) 54%, rgba(28,59,103,1) 100%);
@@ -1437,4 +1441,17 @@ body .title_page_app {
     object-fit: cover;
     border: 2px solid #fff;
     box-shadow: 0 0 5px rgba(0,0,0,0.2);
+}
+
+/* Efek Blur */
+.blur-loading {
+    filter: blur(4px);
+    opacity: 0.5;
+    transition: all 0.3s ease;
+}
+
+.blur-normal {
+    filter: blur(0);
+    opacity: 1;
+    transition: all 0.3s ease;
 }
