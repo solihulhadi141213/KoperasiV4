@@ -19,12 +19,12 @@
                 </li>
                 <li>
                     <a href="index.php?Page=AksesEntitas" class="<?php if($Page=="AksesEntitas"){echo "active";} ?>">
-                        <i class="bi bi-circle"></i><span>Entitas Pengurus</span>
+                        <i class="bi bi-circle"></i><span>Level/Entitas</span>
                     </a>
                 </li>
                 <li>
                     <a href="index.php?Page=Akses" class="<?php if($Page=="Akses"){echo "active";} ?>">
-                        <i class="bi bi-circle"></i><span>Akses Pengurus</span>
+                        <i class="bi bi-circle"></i><span>Akses Pengguna</span>
                     </a>
                 </li>
             </ul>
