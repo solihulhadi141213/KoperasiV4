@@ -1443,6 +1443,18 @@ body .title_page_app {
     box-shadow: 0 0 5px rgba(0,0,0,0.2);
 }
 
+.image-my-profile{
+    width: 320px;
+    height: 320px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    overflow: hidden;
+    border: 3px solid #fff; /* optional */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15); /* optional */
+}
+
 /* Efek Blur */
 .blur-loading {
     filter: blur(4px);

@@ -26,6 +26,7 @@
 
             // Routing Title By Page
             $list_halaman = [
+                "MyProfile"               => "Profile Saya",
                 "Profile"               => "Profile",
                 "Setting"               => "Setting",
                 "ApiKey"                => "API Key",

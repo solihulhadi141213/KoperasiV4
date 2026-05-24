@@ -5,6 +5,7 @@
         $Page=$_GET['Page'];
         //Index Halaman
         $page_arry=[
+            "MyProfile"         =>  "_Page/MyProfile/MyProfile.php",
             "AksesFitur"        =>  "_Page/AksesFitur/AksesFitur.php",
             "AksesEntitas"      =>  "_Page/AksesEntitas/AksesEntitas.php",
             "Akses"             =>  "_Page/Akses/Akses.php",
@@ -36,7 +37,7 @@
             "StockOpename"      =>  "_Page/StockOpename/StockOpename.php",
             "Supplier"          =>  "_Page/Supplier/Supplier.php",
             "AutoJurnal"        =>  "_Page/AutoJurnal/AutoJurnal.php",
-            "MyProfile"         =>  "_Page/MyProfile/MyProfile.php",
+            
             "Help"              =>  "_Page/Help/Help.php",
             "SettingEmail"      =>  "_Page/SettingService/SettingService.php",
             "RiwayatAnggota"    =>  "_Page/RiwayatAnggota/RiwayatAnggota.php",

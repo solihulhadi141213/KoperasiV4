@@ -1,12 +1,12 @@
 <?php
     //Ini adalah halaman untuk melakukan konfigurasi database
     $servername = "localhost";
-    $username = "root";
-    $password = "arunaparasilvanursari";
-    $db = "koperasi_v4";
-    // Create connection
+    $username   = "root";
+    $password   = "arunaparasilvanursari";
+    $db         = "koperasi_v4";
+      // Create connection
     $Conn = new mysqli($servername, $username, $password, $db);
-    // Check connection
+      // Check connection
     if ($Conn->connect_error) {
         die("Connection failed: " . $Conn->connect_error);
     }
