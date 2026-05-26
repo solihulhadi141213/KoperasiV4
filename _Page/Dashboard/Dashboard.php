@@ -16,377 +16,245 @@
             <!-- Kejadian Kegagalan Menampilkan Data Akan Ditampilkan Disini -->
         </div>
     </div>
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="row">
-                <div class="col-md-8">
-                    <div class="row">
-                        <div class="col-xxl-4 col-md-6 col-6">
-                            <div class="card info-card sales-card">
-                                <div class="card-body">
-                                    <h5 class="card-title">Barang</h5>
-                                    <div class="d-flex align-items-center">
-                                        <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                            <i class="bi bi-box"></i>
-                                        </div>
-                                        <div class="ps-3">
-                                            <span class="text-muted small pt-1 fw-bold" id="put_count_rp_barang"></span><br>
-                                            <span class="text-muted small pt-2 ps-1" id="put_count_item_barang"></span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xxl-4 col-md-6 col-6">
-                            <div class="card info-card sales-card">
-                                <div class="card-body">
-                                    <h5 class="card-title">Anggota</h5>
-                                    <div class="d-flex align-items-center gap-3">
-                                        <!-- Icon -->
-                                        <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                            <i class="bi bi-people"></i>
-                                        </div>
-                                        <!-- Data Info -->
-                                        <div>
-                                            <div class="d-flex">
-                                                <span class="text-success small pt-2" style="width: 60px;">Aktif</span>
-                                                <span class="text-muted small pt-2" id="put_anggota_aktif">0.000</span>
-                                            </div>
-                                            <div class="d-flex">
-                                                <span class="text-danger small pt-2" style="width: 60px;">Keluar</span>
-                                                <span class="text-muted small pt-2" id="put_anggota_keluar">0.000</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xxl-4 col-md-6 col-6">
-                            <div class="card info-card revenue-card">
-                                <div class="card-body">
-                                    <h5 class="card-title">Simpanan</h5>
-                                    <div class="d-flex align-items-center gap-3">
-                                        <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                            <i class="bi bi-cash-coin"></i>
-                                        </div>
-                                        <div class="ps-3">
-                                            <span class="text-info small pt-2 ps-1" 
-                                                data-bs-toggle="tooltip" 
-                                                data-bs-placement="top" 
-                                                data-bs-custom-class="custom-tooltip" 
-                                                data-bs-title="Jumlah Simpanan Anggota Setelah Dikurangi Penarikan" 
-                                                id="put_simpanan_anggota">
-                                                <!-- Menampilkan Simpanan Anggota -->
-                                            </span><br>
-                                            <span class="text-warning small pt-2 ps-1" 
-                                                data-bs-toggle="tooltip" 
-                                                data-bs-placement="top" 
-                                                data-bs-custom-class="custom-tooltip" 
-                                                data-bs-title="Jumlah Total Penarikan Dana Simpanan" 
-                                                id="put_penarikan_dana">
-                                                <!-- Menampilkan Penarikan Dana Anggota -->
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xxl-4 col-md-6 col-6">
-                            <div class="card info-card customers-card">
-                                <div class="card-body">
-                                    <h5 class="card-title">Pinjaman</h5>
-                                    <div class="d-flex align-items-center">
-                                        <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                            <i class="bi bi-bank"></i>
-                                        </div>
 
-                                        <div class="ps-3">
-                                            <span class="text-dark small pt-2 ps-1"  
-                                                data-bs-toggle="tooltip" 
-                                                data-bs-placement="top" 
-                                                data-bs-custom-class="custom-tooltip" 
-                                                data-bs-title="Jumlah Total Pinjaman Anggota Yang Belum Lunas"  
-                                                id="put_pinjaman_anggota">
-                                            </span><br>
-                                            <span class="text-muted small pt-2 ps-1" 
-                                                data-bs-toggle="tooltip" 
-                                                data-bs-placement="top" 
-                                                data-bs-custom-class="custom-tooltip" 
-                                                data-bs-title="Jumlah Sesi Pinjaman Belum Lunas" 
-                                                id="put_sesi_pinjaman">
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+    <!-- Menampilkan Data Count -->
+    <div class="row">
+        
+        <div class="col-xxl-3 col-lg-3 col-md-6 col-sm-6 col-6">
+            <div class="card sales-card">
+                <div class="card-body">
+                    <div class="d-flex align-items-center">
+                        <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                            <i class="bi bi-box"></i>
                         </div>
-                        <div class="col-xxl-4 col-md-6 col-6">
-                            <div class="card info-card blue-card">
-                                <div class="card-body">
-                                    <h5 class="card-title">Angsuran</h5>
-                                    <div class="d-flex align-items-center">
-                                        <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                            <i class="bi bi-bank"></i>
-                                        </div>
-                                        <div class="ps-3">
-                                            <span class="text-muted small pt-2 ps-1"  
-                                                data-bs-toggle="tooltip" 
-                                                data-bs-placement="top" 
-                                                data-bs-custom-class="custom-tooltip" 
-                                                data-bs-title="Jumlah Nominal Angsuran Masuk" 
-                                                id="put_nominal_angsuran">
-                                            </span><br>
-                                            <span class="text-muted small pt-2 ps-1"  
-                                                data-bs-toggle="tooltip" 
-                                                data-bs-placement="top" 
-                                                data-bs-custom-class="custom-tooltip" 
-                                                data-bs-title="Jumlah Record Angsuran Masuk" 
-                                                id="put_record_angsuran">
-                                            </span><br>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="ps-3">
+                            <b>Barang</b>
+                            <p class="text-muted small pt-2 ps-1">200.000</p>
                         </div>
-                        <div class="col-xxl-4 col-md-6 col-6">
-                            <div class="card info-card purple-card">
-                                <div class="card-body">
-                                    <h5 class="card-title">Penjualan</h5>
-                                    <div class="d-flex align-items-center">
-                                        <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                            <i class="bi bi-cart-dash"></i>
-                                        </div>
-                                        <div class="ps-3">
-                                            <span class="text-muted small pt-1 ps-1" 
-                                                data-bs-toggle="tooltip" 
-                                                data-bs-placement="top" 
-                                                data-bs-custom-class="custom-tooltip" 
-                                                data-bs-title="Jumlah Total Nominal Penjualan" 
-                                                id="put_nominal_penjualan">
-                                                <i class="bi bi-coin"></i> 0.000.000
-                                            </span><br>
-                                            <span class="text-muted small pt-2 ps-1" 
-                                                data-bs-toggle="tooltip" 
-                                                data-bs-placement="top" 
-                                                data-bs-custom-class="custom-tooltip" 
-                                                data-bs-title="Jumlah Total Record Penjualan" 
-                                                id="put_record_penjualan">
-                                                <i class="bi bi-table"></i> (0.000.000)
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xxl-4 col-md-6 col-6">
-                            <div class="card info-card customers-card">
-                                <div class="card-body">
-                                    <h5 class="card-title">Pembelian</h5>
-                                    <div class="d-flex align-items-center">
-                                        <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                            <i class="bi bi-cart-plus"></i>
-                                        </div>
-                                        <div class="ps-3">
-                                            <span class="text-muted small pt-2 ps-1"
-                                                data-bs-toggle="tooltip" 
-                                                data-bs-placement="top" 
-                                                data-bs-custom-class="custom-tooltip" 
-                                                data-bs-title="Jumlah Total Nominal Pembelian" 
-                                                id="put_nominal_pembelian">
-                                                <i class="bi bi-coin"></i> 0.00.000
-                                            </span><br>
-                                            <span class="text-muted small pt-2 ps-1"
-                                                data-bs-toggle="tooltip" 
-                                                data-bs-placement="top" 
-                                                data-bs-custom-class="custom-tooltip" 
-                                                data-bs-title="Jumlah Total Record Pembelian" 
-                                                id="put_record_pembelian">
-                                                <i class="bi bi-table"></i> (0.00.000)
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xxl-4 col-md-6 col-6">
-                            <div class="card info-card revenue-card">
-                                <div class="card-body">
-                                    <h5 class="card-title">Bagi Hasil</h5>
-                                    <div class="d-flex align-items-center">
-                                        <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                            <i class="bi bi-calculator"></i>
-                                        </div>
-                                        <div class="ps-3">
-                                            <span class="text-muted small pt-2 ps-1"
-                                                data-bs-toggle="tooltip" 
-                                                data-bs-placement="top" 
-                                                data-bs-custom-class="custom-tooltip" 
-                                                data-bs-title="Jumlah Total Nominal Bagi Hasil Yang Disalurkan" 
-                                                id="put_nominal_bagi_hasil">
-                                                <i class="bi bi-coin"></i> 0.00.000
-                                            </span><br>
-                                            <span class="text-muted small pt-2 ps-1"
-                                                data-bs-toggle="tooltip" 
-                                                data-bs-placement="top" 
-                                                data-bs-custom-class="custom-tooltip" 
-                                                data-bs-title="Jumlah Total Record Bagi Hasil Yang Disalurkan" 
-                                                id="put_record_bagii_hasil">
-                                                <i class="bi bi-table"></i> (0.00.000)
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xxl-4 col-md-6 col-6">
-                            <div class="card info-card transsaction-card">
-                                <div class="card-body">
-                                    <h5 class="card-title">Transaksi Operasional</h5>
-                                    <div class="d-flex align-items-center">
-                                        <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                            <i class="bi bi-arrow-left-right"></i>
-                                        </div>
-                                        <div class="ps-3">
-                                            <span class="text-muted small pt-2 ps-1"
-                                                data-bs-toggle="tooltip" 
-                                                data-bs-placement="top" 
-                                                data-bs-custom-class="custom-tooltip" 
-                                                data-bs-title="Jumlah Total Nominal Transaksi Operasional" 
-                                                id="put_nominal_transaksi">
-                                                <i class="bi bi-coin"></i> 0.00.000
-                                            </span><br>
-                                            <span class="text-muted small pt-2 ps-1"
-                                                data-bs-toggle="tooltip" 
-                                                data-bs-placement="top" 
-                                                data-bs-custom-class="custom-tooltip" 
-                                                data-bs-title="Jumlah Total Record Transaksi Operasional" 
-                                                id="put_record_transaksi">
-                                                <i class="bi bi-table"></i> (0.00.000)
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="col-12">
-                        <div class="card" id="card_jam_menarik">
-                            <div class="card-body">
-                                <div id="tanggal_menarik">Hari, 01 Januari 1900</div>
-                                <div id="jam_menarik">00:00:00</div>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="card-header">
-                                <b class="card-title"># Pemberitahuan Sistem</b> 
-                            </div>
-                            <div class="card-body" id="ShowPemberitahuanSistem">
-                                <!-- Menampilkan Pemberitahuan Sistem -->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="row">
-                <!-- Reports -->
-                <div class="col-md-12">
-                    <div class="card">
-                        <div class="card-header">
-                            <b class="card-title">
-                                Simpanan & Pinjaman Anggota Thn <?php echo date ('Y'); ?>
-                            </b>
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title" id="NamaTitleData"></h5>
-                            <div id="chart"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="card">
-                        <div class="card-header">
-                            <b class="card-title">
-                                Anggota / <small class="text text-muted">5 Record terbaru</small>
-                            </b>
-                        </div>
-                        <div class="card-body">
-                            <div class="activity" id="ShowAnggotaTerbaru">
-                                <!-- Menampilkan "ShowAnggotaTerbaru" -->
-                            </div>
-                        </div>
-                        <div class="card-footer text-end">
-                            <a href="index.php?Page=Anggota" 
-                                class="btn btn-secondary btn-sm btn-floating" 
-                                data-bs-toggle="tooltip" 
-                                data-bs-placement="top" 
-                                data-bs-custom-class="custom-tooltip" 
-                                data-bs-title="Lihat Selengkapnya Di Halaman Anggota" >
-                                <i class="bi bi-chevron-right"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card">
-                        <div class="card-header">
-                            <b class="card-title">
-                                Simpanan / <small class="text text-muted">5 Record terbaru</small>
-                            </b>
-                        </div>
-                        <div class="card-body">
-                            <div class="activity" id="ShowSimpananTerbaru">
-                                <!-- Menampilkan "ShowSimpananTerbaru"  -->
-                            </div>
-                        </div>
-                        <div class="card-footer text-end">
-                            <a href="index.php?Page=Tabungan" 
-                                class="btn btn-secondary btn-sm btn-floating" 
-                                data-bs-toggle="tooltip" 
-                                data-bs-placement="top" 
-                                data-bs-custom-class="custom-tooltip" 
-                                data-bs-title="Lihat Selengkapnya Di Halaman Simpanan" >
-                                <i class="bi bi-chevron-right"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card">
-                        <div class="card-header">
-                            <b class="card-title">
-                                Pinjaman / <small class="text text-muted">5 Record terbaru</small>
-                            </b>
-                        </div>
-                        <div class="card-body">
-                            <div class="activity" id="ShowPinjamanTerbaru">
-                                <!-- Menampilkan Pinjaman Terbaru -->
-                            </div>
-                        </div>
-                        <div class="card-footer text-end">
-                            <a href="index.php?Page=Pinjaman" 
-                                class="btn btn-secondary btn-sm btn-floating" 
-                                data-bs-toggle="tooltip" 
-                                data-bs-placement="top" 
-                                data-bs-custom-class="custom-tooltip" 
-                                data-bs-title="Lihat Selengkapnya Di Halaman Pinjaman" >
-                                <i class="bi bi-chevron-right"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="card">
-                    <div class="card-body" id="show_calendar">
-                        <!-- Menampilkan Plugin Kalendaer -->
                     </div>
                 </div>
             </div>
         </div>
+        <div class="col-xxl-3 col-lg-3 col-md-6 col-sm-6 col-6">
+            <div class="card transsaction-card">
+                <div class="card-body">
+                    <div class="d-flex align-items-center">
+                        <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                            <i class="bi bi-person"></i>
+                        </div>
+                        <div class="ps-3">
+                            <b>Anggota</b>
+                            <p class="text-muted small pt-2 ps-1">200.000</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xxl-3 col-lg-3 col-md-6 col-sm-6 col-6">
+            <div class="card customers-card">
+                <div class="card-body">
+                    <div class="d-flex align-items-center">
+                        <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                            <i class="bi bi-coin"></i>
+                        </div>
+                        <div class="ps-3">
+                            <b>Beban</b>
+                            <p class="text-muted small pt-2 ps-1">200.000</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xxl-3 col-lg-3 col-md-6 col-sm-6 col-6">
+            <div class="card revenue-card">
+                <div class="card-body">
+                    <div class="d-flex align-items-center">
+                        <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                            <i class="bi bi-cart-check"></i>
+                        </div>
+                        <div class="ps-3">
+                            <b>Pendapatan</b>
+                            <p class="text-muted small pt-2 ps-1">200.000</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
     </div>
+
+    <div class="row align-items-stretch">
+
+        <div class="col-md-9 mb-3">
+            <div class="card h-100">
+                <div class="card-body" id="chart">
+                    <!-- Grafik Beban dan Pendapatan -->
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 mb-3">
+            <div class="card h-100">
+                <div class="card-body" id="pie">
+                    <!-- Grafik Beban VS Pendapatan -->
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row align-items-stretch">
+
+        <div class="col-md-9 mb-3">
+            <div class="card h-100">
+                <div class="card-header">
+                    <b class="card-title">
+                        <i class="bi bi-calendar"></i> Penjualan Terbaru
+                    </b>
+                </div>
+                <div class="card-body">
+                    <div class="table table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <td class="text-center"><small><b>No</b></small></td>
+                                    <td class="text-left"><small><b>Tanggal</b></small></td>
+                                    <td class="text-left"><small><b>Anggota</b></small></td>
+                                    <td class="text-left"><small><b>Nominal</b></small></td>
+                                    <td class="text-left"><small><b>Status</b></small></td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="text-center"><small class="text-muted">1</small></td>
+                                    <td class="text-left"><small class="text-muted">01/01/2025 08:00</small></td>
+                                    <td class="text-left"><small class="text-muted">Solihul hadi</small></td>
+                                    <td class="text-left"><small class="text-muted">Rp 20.000</small></td>
+                                    <td class="text-left">
+                                        <span class="badge bg-success-subtle text-success">Lunas</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center"><small class="text-muted">2</small></td>
+                                    <td class="text-left"><small class="text-muted">01/01/2025 08:00</small></td>
+                                    <td class="text-left"><small class="text-muted">Solihul hadi</small></td>
+                                    <td class="text-left"><small class="text-muted">Rp 20.000</small></td>
+                                    <td class="text-left">
+                                        <span class="badge bg-success-subtle text-success">Lunas</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center"><small class="text-muted">3</small></td>
+                                    <td class="text-left"><small class="text-muted">01/01/2025 08:00</small></td>
+                                    <td class="text-left"><small class="text-muted">Solihul hadi</small></td>
+                                    <td class="text-left"><small class="text-muted">Rp 20.000</small></td>
+                                    <td class="text-left">
+                                        <span class="badge bg-success-subtle text-success">Lunas</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center"><small class="text-muted">4</small></td>
+                                    <td class="text-left"><small class="text-muted">01/01/2025 08:00</small></td>
+                                    <td class="text-left"><small class="text-muted">Solihul hadi</small></td>
+                                    <td class="text-left"><small class="text-muted">Rp 20.000</small></td>
+                                    <td class="text-left">
+                                        <span class="badge bg-success-subtle text-success">Lunas</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center"><small class="text-muted">5</small></td>
+                                    <td class="text-left"><small class="text-muted">01/01/2025 08:00</small></td>
+                                    <td class="text-left"><small class="text-muted">Solihul hadi</small></td>
+                                    <td class="text-left"><small class="text-muted">Rp 20.000</small></td>
+                                    <td class="text-left">
+                                        <span class="badge bg-success-subtle text-success">Lunas</span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="row">
+                        <div class="col-6">Page 1 Of 100</div>
+                        <div class="col-6 text-end">
+                            <button type="button" class="btn btn-sm btn-floating btn-outline-secondary">
+                                <i class="bi bi-chevron-left"></i>
+                            </button>
+                            <button type="button" class="btn btn-sm btn-floating btn-outline-secondary">
+                                <i class="bi bi-chevron-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 mb-3">
+            
+            <div class="card h-100">
+                <div class="card-header">
+                    <b class="card-title">
+                        <i class="bi bi-award"></i> Top Anggota
+                    </b>
+                </div>
+                <div class="card-body">
+                    
+                    <div class="row mb-3 border-1 border-bottom">
+                        <div class="col-12">
+                            <small><b>Solihul Hadi</b></small>
+                        </div>
+                        <div class="col-6 mb-2"><small class="text-muted">01/01/2025</small></div>
+                        <div class="col-6 mb-2 text-end"><small class="text-success">Rp 11.500.000</small></div>
+                    </div>
+                    <div class="row mb-3 border-1 border-bottom">
+                        <div class="col-12">
+                            <small><b>Dewi Widiastuti</b></small>
+                        </div>
+                        <div class="col-6 mb-2"><small class="text-muted">01/01/2025</small></div>
+                        <div class="col-6 mb-2 text-end"><small class="text-success">Rp 5.500.000</small></div>
+                    </div>
+                    <div class="row mb-3 border-1 border-bottom">
+                        <div class="col-12">
+                            <small><b>Windy Yanuariska</b></small>
+                        </div>
+                        <div class="col-6 mb-2"><small class="text-muted">01/01/2025</small></div>
+                        <div class="col-6 mb-2 text-end"><small class="text-success">Rp 4.400.000</small></div>
+                    </div>
+                    <div class="row mb-3 border-1 border-bottom">
+                        <div class="col-12">
+                            <small><b>Anna Nur Fadilah</b></small>
+                        </div>
+                        <div class="col-6 mb-2"><small class="text-muted">01/01/2025</small></div>
+                        <div class="col-6 mb-2 text-end"><small class="text-success">Rp 3.400.000</small></div>
+                    </div>
+                    <div class="row mb-3 border-1 border-bottom">
+                        <div class="col-12">
+                            <small><b>Syamsul Maarif</b></small>
+                        </div>
+                        <div class="col-6 mb-2"><small class="text-muted">01/01/2025</small></div>
+                        <div class="col-6 mb-2 text-end"><small class="text-success">Rp 3.200.000</small></div>
+                    </div>
+
+                </div>
+                <div class="card-footer">
+                    <div class="row">
+                        <div class="col-12 text-end">
+                            <button type="button" class="btn btn-sm btn-floating btn-outline-secondary">
+                                <i class="bi bi-chevron-left"></i>
+                            </button>
+                            <button type="button" class="btn btn-sm btn-floating btn-outline-secondary">
+                                <i class="bi bi-chevron-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+
 </section>

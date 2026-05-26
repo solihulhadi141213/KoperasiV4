@@ -145,6 +145,9 @@
     setcookie("id_akses", $id_akses, $cookieOptions);
     setcookie("login_token", $token, $cookieOptions);
 
+    // Set Session
+    $_SESSION['NotifikasiSwal'] = "Login Berhasil";
+
     // Response Success
     echo json_encode([
         'status' => 'success',

@@ -7,8 +7,17 @@
 <script src="node_modules/jquery/dist/jquery.min.js" type="text/javascript"></script>
 <script src="node_modules/jQuery-Mask-Plugin/dist/jquery.mask.min.js" type="text/javascript"></script>
 <script src="node_modules/sweetalert2/dist/sweetalert2.all.min.js" type="text/javascript"></script>
+
 <!-- Template Main JS File -->
 <script src="assets/js/main.js"></script>
+
+<!-- Apex chart -->
+<?php
+    if(empty($_GET['Page'])){
+        echo '<script src="node_modules/apexcharts/dist/apexcharts.min.js"></script>';
+    }
+?>
+
 <script type="text/javascript">
     $(document).ready(function(){
         // Format mata uang.

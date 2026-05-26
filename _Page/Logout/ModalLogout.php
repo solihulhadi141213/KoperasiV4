@@ -1,48 +1,54 @@
-<div class="modal fade" id="ModalLogout" tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered modal-sm">
-        <div class="modal-content text-center">
+<!-- Modal Logout -->
+<div class="modal fade" id="ModalLogout" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-md">
+        <div class="modal-content border-0 shadow rounded-4 overflow-hidden">
 
             <!-- Header -->
             <div class="modal-header border-0 pb-0">
-                <h5 class="modal-title w-100 text-danger">
-                    <i class="bi bi-box-arrow-right"></i> Logout
-                </h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                <button type="button" 
+                        class="btn-close shadow-none" 
+                        data-bs-dismiss="modal">
+                </button>
             </div>
 
             <!-- Body -->
-            <div class="modal-body pt-2">
+            <div class="modal-body text-center pt-2 pb-3">
 
-                <!-- Icon / GIF -->
+                <!-- Icon -->
                 <div class="mb-3">
-                    <img src="assets/img/Icon/logout.gif" 
-                         alt="Logout" 
-                         class="img-fluid rounded"
-                         style="max-height:120px;">
+                    <div class="d-inline-flex align-items-center justify-content-center rounded-circle bg-danger-subtle"
+                         style="width:80px;height:80px;">
+
+                        <i class="bi bi-power text-danger"
+                           style="font-size:2rem;"></i>
+                    </div>
                 </div>
 
                 <!-- Text -->
-                <p class="mb-1 fw-semibold">
+                <h6 class="fw-bold mb-1">
                     Yakin ingin keluar?
+                </h6>
+
+                <p class="text-muted small mb-0">
+                    Sesi login Anda akan diakhiri dan Anda perlu login kembali untuk mengakses aplikasi.
                 </p>
-                <small class="text-muted">
-                    Anda akan keluar dari sistem aplikasi
-                </small>
 
             </div>
 
             <!-- Footer -->
-            <div class="modal-footer border-0 d-flex justify-content-center gap-2">
+            <div class="modal-footer border-0 pt-0 justify-content-center">
 
-                <a href="_Page/Logout/ProsesLogout.php" 
-                   class="btn btn-danger btn-sm px-3">
-                    <i class="bi bi-check-circle"></i> Ya
+                <a href="_Page/Logout/ProsesLogout.php"
+                   class="btn btn-danger px-4">
+
+                    <i class="bi bi-box-arrow-right me-1"></i> Logout
                 </a>
 
-                <button type="button" 
-                        class="btn btn-outline-secondary btn-sm px-3" 
+                 <button type="button"
+                        class="btn btn-light border px-4"
                         data-bs-dismiss="modal">
-                    <i class="bi bi-x-circle"></i> Batal
+
+                    <i class="bi bi-x-circle me-1"></i> Batal
                 </button>
 
             </div>

@@ -56,20 +56,20 @@
                             <table class="table table-hover table-striped">
                                 <thead>
                                     <tr>
-                                        <th><b>No</b></th>
-                                        <th><b>Nama Fitur</b></th>
-                                        <th><b>Kategori</b></th>
-                                        <th><b>Kode</b></th>
-                                        <th><b>Entitas</b></th>
-                                        <th><b>Akses/User</b></th>
-                                        <th><b>Opsi</b></th>
+                                        <td class="text-center"><b><small>No</small></b></td>
+                                        <td><b><small>Nama Fitur</small></b></td>
+                                        <td><b><small>Kategori</small></b></td>
+                                        <td><b><small>Kode Akses</small></b></td>
+                                        <td><b><small>Entitas</small></b></td>
+                                        <td><b><small>Pengguna/User</small></b></td>
+                                        <td class="text-center"><b>Opsi</b></td>
                                     </tr>
                                 </thead>
                                 <tbody id="MenampilkanTabelFitur">
                                     <!-- Menampilkan Tabel Fitur -->
                                     <tr>
                                         <td colspan="7" class="text-center">
-                                            <small class="text-danger">Tidak Ada Data Fitur Yang Ditampilkan!</small>
+                                            <small class="text-danger">No Data</small>
                                         </td>
                                     </tr>
                                 </tbody>

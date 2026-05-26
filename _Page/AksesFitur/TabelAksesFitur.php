@@ -300,17 +300,17 @@
             if ($JumlahEntitas > 0) {
 
                 $labelEntitas = '
-                    <span class="p-1 bg-primary-subtle rounded-1">
+                    <button class="btn btn-sm btn-secondary">
                         <small>' . $JumlahEntitas . ' Entitas</small>
-                    </span>
+                    </button>
                 ';
 
             } else {
 
                 $labelEntitas = '
-                    <span class="p-1 bg-danger-subtle rounded-1">
-                        <small>Tidak Ada</small>
-                    </span>
+                    <button class="btn btn-sm btn-outline-secondary">
+                        <small>0 Entitas</small>
+                    </button>
                 ';
             }
 
@@ -320,17 +320,17 @@
             if ($JumlahPengguna > 0) {
 
                 $labelUser = '
-                    <span class="p-1 bg-success-subtle rounded-1">
+                    <button class="btn btn-sm btn-secondary">
                         <small>' . $JumlahPengguna . ' User</small>
-                    </span>
+                    </button>
                 ';
 
             } else {
 
                 $labelUser = '
-                    <span class="p-1 bg-danger-subtle rounded-1">
-                        <small>Tidak Ada</small>
-                    </span>
+                    <button class="btn btn-sm btn-outline-secondary">
+                        <small>0 User</small>
+                    </button>
                 ';
             }
 

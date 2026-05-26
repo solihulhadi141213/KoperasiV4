@@ -1,62 +1,62 @@
 [
     {
         "x": "January",
-        "ySimpanan": 0,
-        "yPinjaman": 0
+        "y_Beban": 15000000,
+        "y_Pendapatan": 22000000
     },
     {
         "x": "February",
-        "ySimpanan": 0,
-        "yPinjaman": 0
+        "y_Beban": 14500000,
+        "y_Pendapatan": 21000000
     },
     {
         "x": "March",
-        "ySimpanan": 0,
-        "yPinjaman": 0
+        "y_Beban": 16000000,
+        "y_Pendapatan": 24500000
     },
     {
         "x": "April",
-        "ySimpanan": 0,
-        "yPinjaman": 0
+        "y_Beban": 15500000,
+        "y_Pendapatan": 23000000
     },
     {
         "x": "May",
-        "ySimpanan": 0,
-        "yPinjaman": 0
+        "y_Beban": 17000000,
+        "y_Pendapatan": 26000000
     },
     {
         "x": "June",
-        "ySimpanan": 0,
-        "yPinjaman": 0
+        "y_Beban": 18500000,
+        "y_Pendapatan": 28000000
     },
     {
         "x": "July",
-        "ySimpanan": 0,
-        "yPinjaman": 0
+        "y_Beban": 16500000,
+        "y_Pendapatan": 25000000
     },
     {
         "x": "August",
-        "ySimpanan": 0,
-        "yPinjaman": 0
+        "y_Beban": 17200000,
+        "y_Pendapatan": 27000000
     },
     {
         "x": "September",
-        "ySimpanan": 0,
-        "yPinjaman": 0
+        "y_Beban": 16000000,
+        "y_Pendapatan": 25500000
     },
     {
         "x": "October",
-        "ySimpanan": 0,
-        "yPinjaman": 0
+        "y_Beban": 18000000,
+        "y_Pendapatan": 29000000
     },
     {
         "x": "November",
-        "ySimpanan": 0,
-        "yPinjaman": 0
+        "y_Beban": 19000000,
+        "y_Pendapatan": 31000000
     },
     {
         "x": "December",
-        "ySimpanan": 0,
-        "yPinjaman": 0
+        "y_Beban": 22000000,
+        "y_Pendapatan": 35000000
     }
 ]

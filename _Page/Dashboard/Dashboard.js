@@ -60,6 +60,7 @@ function CountOfSimpanan() {
         },
     });
 }
+
 // Fungsi Untuk Menampilkan Data Pinjaman Anggota
 function CountOfPinjaman() {
     $.ajax({
@@ -81,6 +82,7 @@ function CountOfPinjaman() {
         },
     });
 }
+
 // Fungsi Untuk Menampilkan Data Angsuran
 function CountOfAngsuran() {
     $.ajax({
@@ -101,6 +103,7 @@ function CountOfAngsuran() {
         },
     });
 }
+
 // Fungsi Untuk Menampilkan Data Penjualan
 function CountOfPenjualan() {
     $.ajax({
@@ -121,6 +124,7 @@ function CountOfPenjualan() {
         },
     });
 }
+
 // Fungsi Untuk Menampilkan Data Pembelan
 function CountOfPembelian() {
     $.ajax({
@@ -141,6 +145,7 @@ function CountOfPembelian() {
         },
     });
 }
+
 // Fungsi Untuk Menampilkan Data Bagi Hasil
 function CountOfBagiHasil() {
     $.ajax({
@@ -161,6 +166,7 @@ function CountOfBagiHasil() {
         },
     });
 }
+
 // Fungsi Untuk Menampilkan Data Transaksi Operasional
 function CountOfTransaksiOperasional() {
     $.ajax({
@@ -181,6 +187,7 @@ function CountOfTransaksiOperasional() {
         },
     });
 }
+
 // Fungsi Untuk Menampilkan Pemberitahuan Sistem
 function ShowPemberitahuanSistem() {
     $.ajax({
@@ -192,6 +199,7 @@ function ShowPemberitahuanSistem() {
         }
     });
 }
+
 // Fungsi Untuk Menampilkan Anggota Terbaru
 function ShowAnggotaTerbaru() {
     $.ajax({
@@ -203,6 +211,7 @@ function ShowAnggotaTerbaru() {
         }
     });
 }
+
 // Fungsi Untuk Menampilkan Simpanan Terbaru
 function ShowSimpananTerbaru() {
     $.ajax({
@@ -214,6 +223,7 @@ function ShowSimpananTerbaru() {
         }
     });
 }
+
 // Fungsi Untuk Menampilkan Pinjaman Terbaru
 function ShowPinjamanTerbaru() {
     $.ajax({
@@ -224,14 +234,15 @@ function ShowPinjamanTerbaru() {
         }
     });
 }
+
 // Fungsi Untuk Menampilkan Grafik
-function ShowGrafikSiimpanPinjam() {
+function ShowGrafik() {
     // Fungsi untuk mengambil data dari file JSON
     $.getJSON("_Page/Dashboard/GrafikTransaksi.json", function (data) {
         // Mengolah data untuk ApexCharts
         const categories = data.map(item => item.x);
-        const simpananSeries = data.map(item => parseFloat(item.ySimpanan));
-        const pinjamanSeries = data.map(item => parseFloat(item.yPinjaman));
+        const BebanSeries = data.map(item => parseFloat(item.y_Beban));
+        const PendapatnSeries = data.map(item => parseFloat(item.y_Pendapatan));
 
         // Konfigurasi grafik
         var options = {
@@ -239,14 +250,19 @@ function ShowGrafikSiimpanPinjam() {
                 type: 'bar',
                 height: 400
             },
+            title: {
+                text: 'Grafik Beban dan Pendapatan Tahun 2025',
+                align: 'center'
+            },
+
             series: [
                 {
-                    name: 'Simpanan',
-                    data: simpananSeries
+                    name: 'Beban',
+                    data: BebanSeries
                 },
                 {
-                    name: 'Pinjaman',
-                    data: pinjamanSeries
+                    name: 'Pendapatan',
+                    data: PendapatnSeries
                 }
             ],
             xaxis: {
@@ -277,39 +293,83 @@ function ShowGrafikSiimpanPinjam() {
     });
 }
 
-// Fungsi untuk menampilkan jam digital
-function tampilkanJam() {
-    const waktu = new Date();
-    let jam = waktu.getHours().toString().padStart(2, '0');
-    let menit = waktu.getMinutes().toString().padStart(2, '0');
-    let detik = waktu.getSeconds().toString().padStart(2, '0');
+// Fungsi menampilkan pie chart
+function ShowPie() {
+    $.getJSON("_Page/Dashboard/GrafikSummery.json", function (data) {
 
-    $('#jam_menarik').text(`${jam}:${menit}:${detik}`);
-}
+        // Ambil data
+        const Beban = parseFloat(data.x);
+        const Pendapatan = parseFloat(data.y);
 
-// Fungsi untuk menampilkan tanggal
-function tampilkanTanggal() {
-    const waktu = new Date();
-    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-    const tanggal = waktu.toLocaleDateString('id-ID', options);
-    
-    $('#tanggal_menarik').text(tanggal);
-}
-// Fungsi Untuk Menampilkan Kalendaer
-function show_calendar() {
-    var calendarEl = document.getElementById('show_calendar');
-    var calendar = new FullCalendar.Calendar(calendarEl, {
-        initialView: 'dayGridMonth'
+        // Konfigurasi pie chart
+        var options = {
+            chart: {
+                type: 'pie',
+                height: 350
+            },
+            title: {
+                text: 'Beban VS Pendapatan',
+                align: 'center'
+            },
+
+            series: [
+                Beban,
+                Pendapatan
+            ],
+
+            labels: [
+                'Beban',
+                'Pendapatan'
+            ],
+
+            tooltip: {
+                y: {
+                    formatter: function (value) {
+                        return new Intl.NumberFormat(
+                            'id-ID',
+                            {
+                                style: 'currency',
+                                currency: 'IDR'
+                            }
+                        ).format(value);
+                    }
+                }
+            },
+
+            legend: {
+                position: 'bottom'
+            },
+
+            dataLabels: {
+                formatter: function (val) {
+                    return val.toFixed(1) + "%";
+                }
+            }
+        };
+
+        // Render chart
+        var chart = new ApexCharts(
+            document.querySelector("#pie"),
+            options
+        );
+
+        chart.render();
+
+    }).fail(function (xhr, status, error) {
+        console.error("Gagal memuat data pie chart");
+        console.error(error);
     });
-    calendar.render();
+
 }
+
+
+
+// INISIASI DATA
 $(document).ready(function () {
     //Menampilkan Data Pertama Kali
-    CountOfBarang();
-    show_calendar();
-    ShowGrafikSiimpanPinjam();
-    //Jam Menarik
-    tampilkanTanggal(); // Tampilkan tanggal saat halaman dimuat
-    tampilkanJam();     // Tampilkan jam pertama kali
-    setInterval(tampilkanJam, 1000); // Perbarui jam setiap detik
+    // CountOfBarang();
+    // show_calendar();
+    ShowGrafik();
+    ShowPie();
+
 });
