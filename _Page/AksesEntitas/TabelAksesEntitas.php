@@ -157,26 +157,30 @@
     // =========================================================
     // QUERY DATA
     // =========================================================
+    // Open Data With Prepared Statmnet
     $sql = "
         SELECT
             ae.uuid_akses_entitas,
             ae.akses,
             ae.keterangan,
 
-            COUNT(DISTINCT ai.id_akses_ijin) AS jumlah_fitur,
+            COUNT(DISTINCT ar.id_akses_referensi) AS jumlah_fitur,
             COUNT(DISTINCT a.id_akses) AS jumlah_pengguna
 
         FROM akses_entitas ae
 
-        LEFT JOIN akses a
+        LEFT JOIN akses a 
             ON ae.uuid_akses_entitas = a.uuid_akses_entitas
 
-        LEFT JOIN akses_ijin ai
-            ON a.id_akses = ai.id_akses
+        LEFT JOIN akses_referensi ar 
+            ON ae.uuid_akses_entitas = ar.uuid_akses_entitas
 
         $where
 
-        GROUP BY ae.uuid_akses_entitas
+        GROUP BY
+            ae.uuid_akses_entitas,
+            ae.akses,
+            ae.keterangan
 
         ORDER BY ae.$OrderBy $ShortBy
 
@@ -266,13 +270,13 @@
             // Routing Tombol
             if(empty($jumlah_fitur)){
                 $tombol_jumlah_fitur = '
-                    <button class="btn btn-sm btn-outline-secondary">
+                    <button class="btn btn-sm btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#ModalFitur" data-id="'.$uuid_akses_entitas.'">
                        0 Fitur
                     </button>
                 ';
             }else{
                 $tombol_jumlah_fitur = '
-                    <button class="btn btn-sm btn-secondary">
+                    <button class="btn btn-sm btn-secondary" data-bs-toggle="modal" data-bs-target="#ModalFitur" data-id="'.$uuid_akses_entitas.'">
                        '.$jumlah_fitur.' Fitur
                     </button>
                 ';
@@ -280,13 +284,13 @@
 
              if(empty($jumlah_pengguna)){
                 $tombol_jumlah_pengguna = '
-                    <button class="btn btn-sm btn-outline-secondary">
+                    <button class="btn btn-sm btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#ModalPengguna" data-id="'.$uuid_akses_entitas.'">
                        0 Pengguna
                     </button>
                 ';
             }else{
                 $tombol_jumlah_pengguna = '
-                    <button class="btn btn-sm btn-secondary">
+                    <button class="btn btn-sm btn-secondary" data-bs-toggle="modal" data-bs-target="#ModalPengguna" data-id="'.$uuid_akses_entitas.'">
                        '.$jumlah_pengguna.' Pengguna
                     </button>
                 ';
@@ -350,7 +354,7 @@
                                 <a class="dropdown-item text-danger"
                                     href="javascript:void(0);"
                                     data-bs-toggle="modal"
-                                    data-bs-target="#ModalDelete"
+                                    data-bs-target="#ModalHapus"
                                     data-id="'.$uuid_akses_entitas.'">
 
                                     <i class="bi bi-trash"></i> Hapus

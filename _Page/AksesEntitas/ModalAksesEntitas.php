@@ -1,4 +1,4 @@
-<!-- Filter Data -->
+<!-- FILTER -->
 <div class="modal fade" id="ModalFilter" tabindex="-1">
     <div class="modal-dialog modal-md">
         <div class="modal-content">
@@ -60,10 +60,10 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary btn-rounded">
+                    <button type="submit" class="btn btn-primary">
                         <i class="bi bi-check"></i> Tampilkan
                     </button>
-                    <button type="button" class="btn btn-dark btn-rounded" data-bs-dismiss="modal">
+                    <button type="button" class="btn btn-dark" data-bs-dismiss="modal">
                         <i class="bi bi-x-circle"></i> Tutup
                     </button>
                 </div>
@@ -72,22 +72,32 @@
     </div>
 </div>
 
+<!-- MODAL TAMBAH -->
 <div class="modal fade" id="ModalTambah" tabindex="-1">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
-            <form action="javascript:void(0);" id="ProsesTambahAksesEntitas" autocomplete="off">
+            <form action="javascript:void(0);" id="ProsesTambah" autocomplete="off">
                 <div class="modal-header">
-                    <h5 class="modal-title text-dark"><i class="bi bi-plus"></i> Tambah Akses Entitas</h5>
+                    <h5 class="modal-title text-dark"><i class="bi bi-plus"></i> Tambah Level/Entitas Akses</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <div class="row mb-2">
-                        <div class="col-md-12" id="FormTambah">
-                            Pastikan data yang anda input sudah benar
+                    <div class="row mb-3">
+                        <div class="col-md-12">
+                            <label for="nama_akses"><small>Nama Akses/Entitas</small></label>
+                            <input type="text" name="akses" id="nama_akses" class="form-control">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-12">
+                            <label for="keterangan"><small>Keterangan</small></label>
+                            <textarea name="keterangan" id="keterangan" class="form-control"></textarea>
                         </div>
                     </div>
                     <div class="row mb-2">
-                        <div class="col-md-12" id="NotifikasiTambah"></div>
+                        <div class="col-md-12" id="NotifikasiTambah">
+                            <!-- Notifikasi Tambah Disini -->
+                        </div>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -102,55 +112,59 @@
         </div>
     </div>
 </div>
-<div class="modal fade" id="ModalDetailEntitias" tabindex="-1">
-    <div class="modal-dialog modal-md">
+
+<!-- Detail Entitas / Level Akses -->
+<div class="modal fade" id="ModalDetail" tabindex="-1">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title text-dark">
-                    <i class="bi bi-info-circle"></i> Detail Entitas Akses
+                    <i class="bi bi-info-circle"></i> Detail Level/Entitas Akses
                 </h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <div class="row">
-                    <div class="col-md-12" id="FormDetailEntitias">
-                        
+                    <div class="col-md-12" id="FormDetail">
+                        <!-- Form Detail -->
                     </div>
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-dark btn-rounded" data-bs-dismiss="modal">
+                <button type="button" class="btn btn-dark" data-bs-dismiss="modal">
                     <i class="bi bi-x-circle"></i> Tutup
                 </button>
             </div>
         </div>
     </div>
 </div>
-<div class="modal fade" id="ModalHapusAksesEntitas" tabindex="-1">
-    <div class="modal-dialog modal-md">
+
+<!-- Modal Edit -->
+<div class="modal fade" id="ModalEdit" tabindex="-1">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
-            <form action="javascript:void(0);" id="ProsesHapusAksesEntitas" autocomplete="off">
+            <form action="javascript:void(0);" id="ProsesEdit" autocomplete="off">
                 <div class="modal-header">
-                    <h5 class="modal-title text-dark"><i class="bi bi-trash"></i> Hapus AksesEntitas</h5>
+                    <h5 class="modal-title text-dark"><i class="bi bi-pencil"></i> Edit Level/Entitas Akses</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <div class="row">
-                        <div class="col-md-12" id="FormHapusAksesEntitas">
+                        <div class="col-md-12" id="FormEdit">
                             
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-12 text-center" id="NotifikasiHapusAksesEntitas">
+                        <div class="col-md-12" id="NotifikasiEdit">
                             
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-success btn-rounded">
-                        <i class="bi bi-check"></i> Ya, Hapus
+                    <button type="submit" class="btn btn-primary" id="ButtonEdit">
+                        <i class="bi bi-save"></i> Simpan
                     </button>
-                    <button type="button" class="btn btn-dark btn-rounded" data-bs-dismiss="modal">
+                    <button type="button" class="btn btn-dark" data-bs-dismiss="modal">
                         <i class="bi bi-x-circle"></i> Tidak
                     </button>
                 </div>
@@ -158,35 +172,95 @@
         </div>
     </div>
 </div>
-<div class="modal fade" id="ModalEditAksesEntitas" tabindex="-1">
+
+<!-- Modal Hapus -->
+<div class="modal fade" id="ModalHapus" tabindex="-1">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
-            <form action="javascript:void(0);" id="ProsesEditAksesEntitas" autocomplete="off">
+            <form action="javascript:void(0);" id="ProsesHapus" autocomplete="off">
                 <div class="modal-header">
-                    <h5 class="modal-title text-dark"><i class="bi bi-pencil"></i> Edit AksesEntitas</h5>
+                    <h5 class="modal-title text-dark"><i class="bi bi-trash"></i> Hapus Level/Entitas Akses</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <div class="row">
-                        <div class="col-md-12" id="FormEditAksesEntitas">
+                        <div class="col-md-12" id="FormHapus">
                             
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-12" id="NotifikasiEditAksesEntitas">
+                        <div class="col-md-12 text-center" id="NotifikasiHapus">
                             
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-success btn-rounded">
-                        <i class="bi bi-save"></i> Simpan
+                    <button type="submit" class="btn btn-primary" id="ButtonHapus">
+                        <i class="bi bi-check"></i> Ya, Hapus
                     </button>
-                    <button type="button" class="btn btn-dark btn-rounded" data-bs-dismiss="modal">
+                    <button type="button" class="btn btn-dark" data-bs-dismiss="modal">
                         <i class="bi bi-x-circle"></i> Tidak
                     </button>
                 </div>
             </form>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Fitur -->
+<div class="modal fade" id="ModalFitur" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <form action="javascript:void(0);" id="ProsesFitur" autocomplete="off">
+                <div class="modal-header">
+                    <h5 class="modal-title text-dark"><i class="bi bi-check-circle"></i> Fitur Standar</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12" id="FormFitur">
+                            
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12" id="NotifikasiFitur">
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary" id="ButtonFitur">
+                        <i class="bi bi-save"></i> Simpan
+                    </button>
+                    <button type="button" class="btn btn-dark" data-bs-dismiss="modal">
+                        <i class="bi bi-x-circle"></i> Tidak
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Pengguna -->
+<div class="modal fade" id="ModalPengguna" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-dark"><i class="bi bi-person-circle"></i> Akun/Akses Pengguna</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12" id="FormPengguna">
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-dark" data-bs-dismiss="modal">
+                    <i class="bi bi-x-circle"></i> Tidak
+                </button>
+            </div>
         </div>
     </div>
 </div>

@@ -1,13 +1,13 @@
 <div class="pagetitle">
     <h1>
         <a href="">
-            <i class="bi bi-layers"></i> Entitas Pengurus</a>
+            <i class="bi bi-layers"></i> Level / Entitas</a>
         </a>
     </h1>
     <nav>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="index.php">Dashboard</a></li>
-            <li class="breadcrumb-item active">Entitas Pengurus</li>
+            <li class="breadcrumb-item active">Entitas Akses</li>
         </ol>
     </nav>
 </div>
@@ -41,8 +41,8 @@
                                     <td class="text-center"><b><small>No</small></b></td>
                                     <td><b><small>Level/Entitas</small></b></td>
                                     <td><b><small>Keterangan</small></b></td>
-                                    <td><b><small>Fitur</small></b></td>
-                                    <td><b><small>Pengguna</small></b></td>
+                                    <td><b><small>Fitur Standar</small></b></td>
+                                    <td><b><small>Akses Pengguna</small></b></td>
                                     <td class="text-center"><b>Opsi</b></td>
                                 </tr>
                             </thead>
