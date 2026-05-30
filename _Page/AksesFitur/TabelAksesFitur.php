@@ -300,16 +300,26 @@
             if ($JumlahEntitas > 0) {
 
                 $labelEntitas = '
-                    <button class="btn btn-sm btn-secondary">
+                    <button class="btn btn-sm btn-secondary"
+                        data-bs-toggle="modal" 
+                        data-bs-target="#ModalEntitas" 
+                        data-id="'.$id_akses_fitur.'">
+
                         <small>' . $JumlahEntitas . ' Entitas</small>
+
                     </button>
                 ';
 
             } else {
 
                 $labelEntitas = '
-                    <button class="btn btn-sm btn-outline-secondary">
+                    <button class="btn btn-sm btn-outline-secondary"
+                        data-bs-toggle="modal" 
+                        data-bs-target="#ModalEntitas" 
+                        data-id="'.$id_akses_fitur.'">
+
                         <small>0 Entitas</small>
+
                     </button>
                 ';
             }
@@ -320,16 +330,26 @@
             if ($JumlahPengguna > 0) {
 
                 $labelUser = '
-                    <button class="btn btn-sm btn-secondary">
+                    <button class="btn btn-sm btn-secondary"
+                        data-bs-toggle="modal" 
+                        data-bs-target="#ModalPengguna" 
+                        data-id="'.$id_akses_fitur.'">
+
                         <small>' . $JumlahPengguna . ' User</small>
+
                     </button>
                 ';
 
             } else {
 
                 $labelUser = '
-                    <button class="btn btn-sm btn-outline-secondary">
+                    <button class="btn btn-sm btn-outline-secondary"
+                        data-bs-toggle="modal" 
+                        data-bs-target="#ModalPengguna" 
+                        data-id="'.$id_akses_fitur.'">
+
                         <small>0 User</small>
+
                     </button>
                 ';
             }

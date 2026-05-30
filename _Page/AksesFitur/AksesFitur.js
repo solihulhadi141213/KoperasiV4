@@ -354,5 +354,37 @@ $(document).ready(function() {
         });
     });
 
+    //=======================================
+    // MODAL ENTITAS
+    //=======================================
+    $('#ModalEntitas').on('show.bs.modal', function (e) {
+        var id_akses_fitur = $(e.relatedTarget).data('id');
+        $('#FormEntitas').html("Loading...");
+        $.ajax({
+            type 	    : 'POST',
+            url 	    : '_Page/AksesFitur/FormEntitas.php',
+            data        : {id_akses_fitur: id_akses_fitur},
+            success     : function(data){
+                $('#FormEntitas').html(data);
+            }
+        });
+    });
+
+    //=======================================
+    // MODAL PENGGUNA
+    //=======================================
+    $('#ModalPengguna').on('show.bs.modal', function (e) {
+        var id_akses_fitur = $(e.relatedTarget).data('id');
+        $('#FormPengguna').html("Loading...");
+        $.ajax({
+            type 	    : 'POST',
+            url 	    : '_Page/AksesFitur/FormPengguna.php',
+            data        : {id_akses_fitur: id_akses_fitur},
+            success     : function(data){
+                $('#FormPengguna').html(data);
+            }
+        });
+    });
+
 
 });
