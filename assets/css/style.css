@@ -1506,3 +1506,114 @@ body .title_page_app {
     opacity: 1;
     transition: all 0.3s ease;
 }
+
+
+/* =======================================================
+   HEADER MODAL BERGAMBAR
+======================================================= */
+.custom-modal-header{
+    position: relative;
+    min-height: 220px;
+    padding: 20px;
+    border-bottom: none;
+    overflow: hidden;
+
+    /* Background */
+    background-image: linear-gradient(
+        rgba(47, 2, 245, 0.35),
+        rgba(50, 4, 255, 0.74)
+    );
+
+    background-size: cover;
+    background-position: center;
+}
+
+/* Overlay */
+.custom-modal-header .overlay{
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.15);
+}
+
+/* =======================================================
+   CONTENT HEADER
+======================================================= */
+.custom-modal-header .header-content{
+    position: relative;
+    z-index: 2;
+
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+/* =======================================================
+   FOTO PROFILE
+======================================================= */
+.header-profile{
+    width: 220px;
+    height: 220px;
+
+    object-fit: cover;
+
+    border-radius: 50%;
+    border: 5px solid rgba(255,255,255,0.9);
+
+    background: #ffffff;
+
+    box-shadow: 0 5px 20px rgba(0,0,0,0.25);
+
+    transition: all 0.3s ease;
+}
+
+/* Hover */
+.header-profile:hover{
+    transform: scale(1.03);
+}
+
+/* =======================================================
+   CLOSE BUTTON
+======================================================= */
+.custom-modal-header .btn-close{
+    position: absolute;
+    top: 15px;
+    right: 15px;
+
+    z-index: 3;
+
+    background-color: rgba(255,255,255,0.2);
+    border-radius: 50%;
+
+    padding: 10px;
+
+    opacity: 1;
+    transition: all 0.3s ease;
+}
+
+/* Hover close */
+.custom-modal-header .btn-close:hover{
+    background-color: rgba(255,255,255,0.35);
+    transform: rotate(90deg);
+}
+
+/* =======================================================
+   RESPONSIVE
+======================================================= */
+@media (max-width: 576px){
+
+    .custom-modal-header{
+        min-height: 180px;
+    }
+
+    .header-profile{
+        width: 90px;
+        height: 90px;
+    }
+
+    .modal-body{
+        padding: 20px;
+    }
+}
