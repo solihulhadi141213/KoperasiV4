@@ -18,6 +18,7 @@
     }
 ?>
 
+<!-- Numerical -->
 <script type="text/javascript">
     $(document).ready(function(){
         // Format mata uang.
@@ -33,3 +34,9 @@
 
 <!-- Scan QR -->
 <script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.min.js"></script>
+
+<!-- Select2 (Tidak Digunakan Dulu) -->
+<!-- <script src="node_modules/select2/dist/js/select2.min.js"></script> -->
+
+<!-- Tom Select -->
+<script src="node_modules/tom-select/dist/js/tom-select.complete.min.js"></script>

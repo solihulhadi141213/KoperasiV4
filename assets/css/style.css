@@ -1617,3 +1617,19 @@ body .title_page_app {
         padding: 20px;
     }
 }
+
+/* =======================================================
+   TABLE WARPER
+======================================================= */
+.table-import-wrapper{
+        max-height: 350px;
+        overflow-y: auto;
+    }
+
+    .table-import-wrapper thead th,
+    .table-import-wrapper thead td{
+        position: sticky;
+        top: 0;
+        background: #fff;
+        z-index: 10;
+    }

@@ -7,7 +7,18 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link <?php if($Page=="AksesFitur"||$Page=="AksesEntitas"||$Page=="Akses"){echo "";}else{echo "collapsed";} ?>" data-bs-target="#akses-nav" data-bs-toggle="collapse" href="javascript:void(0);">
+            <a class="nav-link 
+                <?php 
+                    if(
+                        $Page == "AksesFitur"||
+                        $Page == "AksesEntitas"||
+                        $Page == "Akses"
+                    ){echo "";}else{echo "collapsed";} 
+                ?>" 
+                data-bs-target="#akses-nav" 
+                data-bs-toggle="collapse" 
+                href="javascript:void(0);">
+
                 <i class="bi bi-person"></i>
                 <span>Akses</span><i class="bi bi-chevron-down ms-auto"></i>
             </a>
@@ -30,7 +41,19 @@
             </ul>
         </li>
         <li class="nav-item">
-            <a class="nav-link <?php if($Page=="Anggota"||$Page=="AnggotaKeluarMasuk"||$Page=="RekapAnggota"){echo "";}else{echo "collapsed";} ?>" data-bs-target="#anggota-nav" data-bs-toggle="collapse" href="javascript:void(0);">
+            <a class="nav-link 
+                <?php 
+                    if(
+                        $Page == "Anggota"||
+                        $Page == "AnggotaKeluarMasuk"||
+                        $Page == "RekapAnggota"
+                    ){echo "";}else{echo "collapsed";} 
+                ?>
+                " 
+                data-bs-target="#anggota-nav" 
+                data-bs-toggle="collapse" 
+                href="javascript:void(0);">
+
                 <i class="bi bi-people"></i>
                 <span>Anggota</span>
                 <i class="bi bi-chevron-down ms-auto"></i>

@@ -34,18 +34,7 @@
                 "AksesFitur"            => "Fitur Aplikasi",
                 "AksesEntitas"          => "Entitas Akses",
                 "Akses"                 => "Akses Pengguna",
-                "AksesPengajuan"        => "Pengajuan Akses",
-                "SettingSatuSehat"      => "Setting SATUSEHAT",
-                "SettingBpjs"           => "Setting BPJS",
-                "SettingRadix"          => "Setting Radix",
-                "SettingAnalyza"        => "Setting Analyza",
-                "SettingSifarma"        => "Setting Sifarma",
-                "LaporanKesalahan"      => "Laporan Kesalahan",
-                "ReferensiPoliklinik"   => "Poliklinik",
-                "ReferensiDokter"       => "Dokter",
-                "ReferensiJadwalDokter" => "Jadwal Praktek",
-                "ReferensiRuangRawat"   => "Ruang Rawat",
-                "ReferensiIcd"          => "ICD",
+                "Anggota"               => "Anggota",
             ];
             
             // Init Page Title
