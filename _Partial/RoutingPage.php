@@ -10,7 +10,8 @@
             "AksesEntitas"      =>  "_Page/AksesEntitas/AksesEntitas.php",
             "Akses"             =>  "_Page/Akses/Akses.php",
             "Anggota"           =>  "_Page/Anggota/Anggota.php",
-            "AnggotaKeluarMasuk"=>  "_Page/AnggotaKeluarMasuk/AnggotaKeluarMasuk.php",
+            "SettingGeneral"    =>  "_Page/SettingGeneral/SettingGeneral.php",
+            
             "RekapAnggota"      =>  "_Page/RekapAnggota/RekapAnggota.php",
             "JenisSimpanan"     =>  "_Page/JenisSimpanan/JenisSimpanan.php",
             "SimpananWajib"     =>  "_Page/SimpananWajib/SimpananWajib.php",
@@ -26,7 +27,7 @@
             "RekapJualBeli"     =>  "_Page/RekapJualBeli/RekapJualBeli.php",
             "UtangPiutang"      =>  "_Page/UtangPiutang/UtangPiutang.php",
             "Version"           =>  "_Page/Version/Version.php",
-            "SettingGeneral"    =>  "_Page/SettingGeneral/SettingGeneral.php",
+            
             "EntitasAkses"      =>  "_Page/EntitasAkses/EntitasAkses.php",
             "ApiDoc"            =>  "_Page/ApiDoc/ApiDoc.php",
             "Tabungan"          =>  "_Page/Tabungan/Tabungan.php",

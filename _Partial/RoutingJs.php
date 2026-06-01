@@ -12,6 +12,7 @@
             "AksesEntitas"              => "_Page/AksesEntitas/AksesEntitas.js",
             "Akses"                     => "_Page/Akses/Akses.js",
             "Anggota"                   => "_Page/Anggota/Anggota.js",
+            "SettingGeneral"            => "_Page/SettingGeneral/SettingGeneral.js",
             "AnggotaKeluarMasuk"        => "_Page/AnggotaKeluarMasuk/AnggotaKeluarMasuk.js",
             "RekapAnggota"              => "_Page/RekapAnggota/RekapAnggota.js",
             "JenisSimpanan"             => "_Page/JenisSimpanan/JenisSimpanan.js",
@@ -38,7 +39,7 @@
             "AkunPerkiraan"             => "_Page/AkunPerkiraan/AkunPerkiraan.js",
             "Jurnal"                    => "_Page/Jurnal/Jurnal.js",
             "BagiHasil"                 => "_Page/BagiHasil/BagiHasil.js",
-            "SettingGeneral"            => "_Page/SettingGeneral/SettingGeneral.js",
+            
             "EntitasAkses"              => "_Page/EntitasAkses/EntitasAkses.js",
             "ApiDoc"                    => "_Page/ApiDoc/ApiDoc.js",
             "AutoJurnal"                => "_Page/AutoJurnal/AutoJurnal.js",

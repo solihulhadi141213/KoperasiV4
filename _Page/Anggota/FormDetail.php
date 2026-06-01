@@ -86,16 +86,17 @@
     $rank_tag            = htmlspecialchars($Data['rank_tag']);
     $status              = htmlspecialchars($Data['status']);
     $datetime_registered = htmlspecialchars($Data['datetime_registered']);
-    $datetime_leave      = htmlspecialchars($Data['datetime_leave']);
-
+    
     if(empty($kontak)){
         $kontak = "-";
     }
     if(empty($email)){
         $email = "-";
     }
-    if(empty($datetime_leave)){
+    if(empty($Data['datetime_leave'])){
         $datetime_leave = "-";
+    }else{
+        $datetime_leave      = htmlspecialchars($Data['datetime_leave']);
     }
    
     $Qry->close();

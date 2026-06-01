@@ -10,6 +10,8 @@
             "AksesEntitas"          => "_Page/AksesEntitas/ModalAksesEntitas.php",
             "Akses"                 => "_Page/Akses/ModalAkses.php",
             "Anggota"               => "_Page/Anggota/ModalAnggota.php",
+            "SettingGeneral"        => "_Page/SettingGeneral/ModalSettingGeneral.php",
+            
             "AnggotaKeluarMasuk"    => "_Page/AnggotaKeluarMasuk/ModalAnggotaKeluarMasuk.php",
             "RekapAnggota"          => "_Page/RekapAnggota/ModalRekapAnggota.php",
             "JenisSimpanan"         => "_Page/JenisSimpanan/ModalJenisSimpanan.php",
@@ -30,7 +32,7 @@
             "Pembelian"             => "_Page/Pembelian/ModalPembelian.php",
             "RekapJualBeli"         => "_Page/RekapJualBeli/ModalRekapJualBeli.php",
             "UtangPiutang"          => "_Page/UtangPiutang/ModalUtangPiutang.php",
-            "SettingGeneral"        => "_Page/SettingGeneral/ModalSettingGeneral.php",
+            
             "Tabungan"              => "_Page/Tabungan/ModalTabungan.php",
             "JenisPinjaman"         => "_Page/JenisPinjaman/ModalJenisPinjaman.php",
             "Pinjaman"              => "_Page/Pinjaman/ModalPinjaman.php",

@@ -1,32 +1,42 @@
 <?php
-    // Persiapkan query dengan prepared statement
-    $sql = "SELECT * FROM setting_general WHERE id_setting_general = ?";
+    // Nilai default
+    $id_setting_general = 0;
+    $title_page         = "";
+    $kata_kunci         = "";
+    $deskripsi          = "";
+    $alamat_bisnis      = "";
+    $email_bisnis       = "";
+    $telepon_bisnis     = "";
+    $favicon            = "";
+    $logo               = "";
+    $base_url           = "";
+    $AuthorAplikasi     = "";
+
+    // Query
+    $sql = "SELECT * FROM setting_general LIMIT 1";
     $stmt = $Conn->prepare($sql);
 
-    // Bind parameter (tipe data integer "i")
-    $id = 1;
-    $stmt->bind_param("i", $id);
+    if ($stmt) {
+        $stmt->execute();
 
-    // Eksekusi statement
-    $stmt->execute();
+        $result = $stmt->get_result();
 
-    // Ambil hasil query
-    $result = $stmt->get_result();
-    $DataSettingGeneral = $result->fetch_assoc();
+        if ($result && $result->num_rows > 0) {
+            $DataSettingGeneral = $result->fetch_assoc();
 
-    // Simpan hasil ke variabel
-    $id_setting_general = $DataSettingGeneral['id_setting_general'] ?? null;
-    $title_page         = $DataSettingGeneral['title_page'] ?? null;
-    $kata_kunci         = $DataSettingGeneral['kata_kunci'] ?? null;
-    $deskripsi          = $DataSettingGeneral['deskripsi'] ?? null;
-    $alamat_bisnis      = $DataSettingGeneral['alamat_bisnis'] ?? null;
-    $email_bisnis       = $DataSettingGeneral['email_bisnis'] ?? null;
-    $telepon_bisnis     = $DataSettingGeneral['telepon_bisnis'] ?? null;
-    $favicon            = $DataSettingGeneral['favicon'] ?? null;
-    $logo               = $DataSettingGeneral['logo'] ?? null;
-    $base_url           = $DataSettingGeneral['base_url'] ?? null;
-    $AuthorAplikasi     = $DataSettingGeneral['author'] ?? null;
+            $id_setting_general = $DataSettingGeneral['id_setting_general'] ?? 0;
+            $title_page         = $DataSettingGeneral['title_page'] ?? "";
+            $kata_kunci         = $DataSettingGeneral['kata_kunci'] ?? "";
+            $deskripsi          = $DataSettingGeneral['deskripsi'] ?? "";
+            $alamat_bisnis      = $DataSettingGeneral['alamat_bisnis'] ?? "";
+            $email_bisnis       = $DataSettingGeneral['email_bisnis'] ?? "";
+            $telepon_bisnis     = $DataSettingGeneral['telepon_bisnis'] ?? "";
+            $favicon            = $DataSettingGeneral['favicon'] ?? "";
+            $logo               = $DataSettingGeneral['logo'] ?? "";
+            $base_url           = $DataSettingGeneral['base_url'] ?? "";
+            $AuthorAplikasi     = $DataSettingGeneral['author'] ?? "";
+        }
 
-    // Tutup statement
-    $stmt->close();
+        $stmt->close();
+    }
 ?>

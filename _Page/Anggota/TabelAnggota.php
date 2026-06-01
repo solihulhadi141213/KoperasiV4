@@ -18,7 +18,7 @@
             "status" => "error",
             "html"   => '
                 <tr>
-                    <td colspan="7" class="text-center text-danger">
+                    <td colspan="8" class="text-center text-danger">
                         <small>Sesi akses sudah berakhir. Silakan login ulang.</small>
                     </td>
                 </tr>
@@ -152,7 +152,7 @@
             "status" => "error",
             "html"   => '
                 <tr>
-                    <td colspan="7" class="text-center text-danger">
+                    <td colspan="8" class="text-center text-danger">
                         <small>Gagal mempersiapkan query count.</small>
                     </td>
                 </tr>
@@ -218,7 +218,7 @@
             "status" => "error",
             "html"   => '
                 <tr>
-                    <td colspan="7" class="text-center text-danger">
+                    <td colspan="8" class="text-center text-danger">
                         <small>Terjadi kesalahan saat mengambil data.</small>
                     </td>
                 </tr>
@@ -238,7 +238,7 @@
 
         $html .= '
             <tr>
-                <td colspan="7" class="text-center text-danger">
+                <td colspan="8" class="text-center text-danger">
                     <small>Tidak ada data yang ditampilkan.</small>
                 </td>
             </tr>
@@ -257,7 +257,7 @@
             $rank_tag            = htmlspecialchars($data['rank_tag']);
             $status              = htmlspecialchars($data['status']);
             $datetime_registered = date('d/m/Y H:i', strtotime($data['datetime_registered']));
-            $datetime_leave      = date('d/m/Y H:i', strtotime($data['datetime_leave']));
+           
 
             // Routing Status
             if($status=="Active"){
@@ -323,6 +323,11 @@
                     <td>
                         <small class="text text-grayish">
                             '.$organization_tag.'
+                        </small>
+                    </td>
+                    <td>
+                        <small class="text text-grayish">
+                            Rank '.$rank_tag.'
                         </small>
                     </td>
 

@@ -55,6 +55,7 @@
                                     <td><b><small>Nama</small></b></td>
                                     <td><b><small>No.Induk</small></b></td>
                                     <td><b><small>Organization</small></b></td>
+                                    <td><b><small>Rank</small></b></td>
                                     <td><b><small>Tgl.Daftar</small></b></td>
                                     <td class="text-center"><b><small>Status</small></b></td>
                                     <td class="text-center"><b>Opsi</b></td>
@@ -63,7 +64,7 @@
                             <tbody id="tabel_anggota">
                                 <!-- Menampilkan Tabel -->
                                 <tr>
-                                    <td colspan="7" class="text-center">
+                                    <td colspan="8" class="text-center">
                                         <small class="text-danger">No Data</small>
                                     </td>
                                 </tr>
