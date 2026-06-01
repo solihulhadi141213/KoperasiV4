@@ -26,15 +26,17 @@
 
             // Routing Title By Page
             $list_halaman = [
-                "MyProfile"             => "Profile Saya",
-                "Profile"               => "Profile",
-                "Setting"               => "Setting",
-                "ApiKey"                => "API Key",
-                "EmailGateway"          => "Email Gateway",
-                "AksesFitur"            => "Fitur Aplikasi",
-                "AksesEntitas"          => "Entitas Akses",
-                "Akses"                 => "Akses Pengguna",
-                "Anggota"               => "Anggota",
+                "MyProfile"           => "Profile Saya",
+                "Profile"             => "Profile",
+                "Setting"             => "Setting",
+                "ApiKey"              => "API Key",
+                "EmailGateway"        => "Email Gateway",
+                "AksesFitur"          => "Fitur Aplikasi",
+                "AksesEntitas"        => "Entitas Akses",
+                "Akses"               => "Akses Pengguna",
+                "Anggota"             => "Anggota",
+                "SettingGeneral"      => "Pengaturan Umum",
+                "SettingEmailGateway" => "Email Gateway",
             ];
             
             // Init Page Title

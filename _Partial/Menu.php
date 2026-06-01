@@ -227,7 +227,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link <?php if($Page!=="SettingEmail"){echo "collapsed";} ?>" href="index.php?Page=SettingEmail">
+            <a class="nav-link <?php if($Page!=="SettingEmailGateway"){echo "collapsed";} ?>" href="index.php?Page=SettingEmailGateway">
                 <i class="bi bi-envelope"></i>
                 <span>Email Gateway</span>
             </a>
