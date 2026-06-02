@@ -11,6 +11,7 @@
             "Akses"          => "_Page/Akses/ModalAkses.php",
             "Anggota"        => "_Page/Anggota/ModalAnggota.php",
             "JenisSimpanan"  => "_Page/JenisSimpanan/ModalJenisSimpanan.php",
+            "JenisPinjaman"  => "_Page/JenisPinjaman/ModalJenisPinjaman.php",
             "SettingGeneral" => "_Page/SettingGeneral/ModalSettingGeneral.php",
         ];
 

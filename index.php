@@ -36,6 +36,7 @@
                 "Akses"               => "Akses Pengguna",
                 "Anggota"             => "Anggota",
                 "JenisSimpanan"       => "Jenis Simpanan",
+                "JenisPinjaman"       => "Jenis Pinjaman",
                 "SettingGeneral"      => "Pengaturan Umum",
                 "SettingEmailGateway" => "Email Gateway",
             ];
@@ -58,7 +59,7 @@
             include "_Partial/Head.php";
         ?>
     </head>
-    <body>
+    <body class="d-flex flex-column min-vh-100">
         <header id="header" class="header fixed-top d-flex align-items-center nav_background">
             <div class="d-flex align-items-center justify-content-between">
                 <a href="" class="logo d-flex align-items-center">
@@ -79,7 +80,7 @@
         <?php
             include "_Partial/Menu.php";
         ?>
-        <main id="main" class="main">
+        <main id="main" class="main flex-grow-1">
             <?php
                 include "_Partial/RoutingPage.php";
                 include "_Partial/Modal.php";

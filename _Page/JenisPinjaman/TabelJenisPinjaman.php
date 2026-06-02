@@ -33,7 +33,7 @@
     // =========================================================
     $page       = $_POST['page'] ?? 1;
     $batas      = $_POST['batas'] ?? 10;
-    $OrderBy    = $_POST['OrderBy'] ?? 'id_simpanan_reference';
+    $OrderBy    = $_POST['OrderBy'] ?? 'id_pinjaman_jenis';
     $ShortBy    = $_POST['ShortBy'] ?? 'ASC';
     $keyword_by = $_POST['KeywordBy'] ?? '';
     $keyword    = trim($_POST['keyword'] ?? '');
@@ -58,17 +58,18 @@
     // VALIDASI ORDER BY
     // =========================================================
     $allowedOrder = [
-        'id_simpanan_reference',
-        'simpanan_nama',
-        'simpanan_kategori',
-        'simpanan_keterangan',
-        'periode_pembayaran',
-        'nominal',
+        'id_pinjaman_jenis',
+        'nama_pinjaman',
+        'periode_angsuran',
+        'persen_jasa',
+        'nominal_pinjaman',
+        'denda_metode',
+        'denda_nominal',
         'status'
     ];
 
     if (!in_array($OrderBy, $allowedOrder)) {
-        $OrderBy = 'id_simpanan_reference';
+        $OrderBy = 'id_pinjaman_jenis';
     }
 
     // =========================================================
@@ -84,12 +85,13 @@
     // VALIDASI FILTER
     // =========================================================
     $allowedKeywordBy = [
-        'id_simpanan_reference',
-        'simpanan_nama',
-        'simpanan_kategori',
-        'simpanan_keterangan',
-        'periode_pembayaran',
-        'nominal',
+        'id_pinjaman_jenis',
+        'nama_pinjaman',
+        'periode_angsuran',
+        'persen_jasa',
+        'nominal_pinjaman',
+        'denda_metode',
+        'denda_nominal',
         'status'
     ];
 
@@ -106,54 +108,75 @@
 
     if ($keyword !== '') {
 
-        $keywordLike = "%" . $keyword . "%";
+    $keywordLike = "%" . $keyword . "%";
 
-        // Filter berdasarkan kolom tertentu
-        if (!empty($keyword_by)) {
+    if (!empty($keyword_by)) {
 
-            // Filter status
-            if ($keyword_by == 'status') {
+        if($keyword_by == 'status'){
+
+            if(
+                strtolower($keyword) == 'active' ||
+                strtolower($keyword) == 'aktif' ||
+                $keyword == '1'
+            ){
 
                 $where = " WHERE status = ? ";
                 $bindTypes = "i";
-                $bindValues[] = (int)$keyword;
+                $bindValues[] = 1;
 
-            } else {
+            }elseif(
+                strtolower($keyword) == 'inactive' ||
+                strtolower($keyword) == 'nonaktif' ||
+                strtolower($keyword) == 'tidak aktif' ||
+                $keyword == '0'
+            ){
 
-                $where = " WHERE $keyword_by LIKE ? ";
-                $bindTypes = "s";
-                $bindValues[] = $keywordLike;
+                $where = " WHERE status = ? ";
+                $bindTypes = "i";
+                $bindValues[] = 0;
+
+            }else{
+
+                $where = " WHERE 1=0 ";
 
             }
 
-        } else {
+        }else{
 
-            // Pencarian semua kolom
-            $where = "
-                WHERE (
-                    id_simpanan_reference LIKE ? OR
-                    simpanan_nama LIKE ? OR
-                    simpanan_kategori LIKE ? OR
-                    simpanan_keterangan LIKE ? OR
-                    periode_pembayaran LIKE ? OR
-                    nominal LIKE ? OR
-                    status LIKE ?
-                )
-            ";
-
-            $bindTypes = "sssssss";
-
-            for ($i = 0; $i < 7; $i++) {
-                $bindValues[] = $keywordLike;
-            }
+            $where = " WHERE $keyword_by LIKE ? ";
+            $bindTypes = "s";
+            $bindValues[] = $keywordLike;
 
         }
+
+    } else {
+
+        $where = "
+            WHERE (
+                id_pinjaman_jenis LIKE ? OR
+                nama_pinjaman LIKE ? OR
+                periode_angsuran LIKE ? OR
+                persen_jasa LIKE ? OR
+                nominal_pinjaman LIKE ? OR
+                denda_metode LIKE ? OR
+                denda_nominal LIKE ? OR
+                status LIKE ?
+            )
+        ";
+
+        $bindTypes = "ssssssss";
+
+        for($i=0; $i<8; $i++){
+            $bindValues[] = $keywordLike;
+        }
+
     }
+}
 
     // =========================================================
     // TOTAL DATA
     // =========================================================
-    $sql_count = "SELECT COUNT(*) AS total FROM  simpanan_reference $where";
+    $sql_count = "SELECT COUNT(*) AS total FROM pinjaman_jenis $where";
     $stmt_count = $Conn->prepare($sql_count);
     if (!$stmt_count) {
         echo json_encode([
@@ -193,7 +216,7 @@
     // =========================================================
     // QUERY DATA
     // =========================================================
-    $sql  = "SELECT * FROM simpanan_reference $where ORDER BY $OrderBy $ShortBy LIMIT ?, ?";
+    $sql  = "SELECT * FROM pinjaman_jenis $where ORDER BY $OrderBy $ShortBy LIMIT ?, ?";
     $stmt = $Conn->prepare($sql);
     if (!$stmt) {
         echo json_encode([
@@ -256,27 +279,31 @@
 
         while ($data = $query->fetch_assoc()) {
 
-            $id_simpanan_reference = (int)$data['id_simpanan_reference'];
-            $simpanan_nama         = htmlspecialchars($data['simpanan_nama']);
-            $simpanan_kategori     = htmlspecialchars($data['simpanan_kategori']);
-            $simpanan_keterangan   = htmlspecialchars($data['simpanan_keterangan']);
-            $periode_pembayaran    = $data['periode_pembayaran'] ?? '-';
-            $status                = htmlspecialchars($data['status']);
-            
-            // Routing Nominal
-            if(empty($data['nominal'])){
-                $nominal = 0;
+            $id_pinjaman_jenis = (int)$data['id_pinjaman_jenis'];
+            $nama_pinjaman     = htmlspecialchars($data['nama_pinjaman']);
+            $periode_angsuran  = (int)$data['periode_angsuran'];
+            $persen_jasa       = number_format((float)$data['persen_jasa'],2,',','.');
+            $nominal_pinjaman  = (int)$data['nominal_pinjaman'];
+            $denda_metode      = $data['denda_metode'] ?? '-';
+            $status            = htmlspecialchars($data['status']);
+            $denda_nominal     = (float)$data['denda_nominal'];
+            $nominal_rupiah    = "Rp " . number_format($nominal_pinjaman,0,',','.');
+            $denda_rupiah      = "Rp " . number_format($denda_nominal,0,',','.');
+            if(!empty($denda_metode) && $denda_nominal > 0){
+                $label_denda = $denda_rupiah . ' / ' . $denda_metode;
             }else{
-                $nominal = htmlspecialchars($data['nominal']);
+                $label_denda = '-';
             }
-            // Nominal Rupiah
-            $nominal_rupiah = "Rp " . number_format($nominal, 0, ',', '.');
-           
-            // Routing Status
-            if($status==1){
+
+            // Status
+            if($status == 1){
+
                 $label_status = '
-                    <span class="badge bg-success-subtle text-success">Active</span>
+                    <span class="badge bg-success-subtle text-success">
+                        Active
+                    </span>
                 ';
+
                 $tombol_lanjutan = '
                     <li>
                         <a 
@@ -284,16 +311,21 @@
                             href="javascript:void(0);"
                             data-bs-toggle="modal"
                             data-bs-target="#ModalInactive"
-                            data-id="'.$id_simpanan_reference.'">
+                            data-id="'.$id_pinjaman_jenis.'">
 
-                            <i class="bi bi-indent"></i> Inactive
+                            <i class="bi bi-pause-circle"></i> Inactive
                         </a>
                     </li>
                 ';
+
             }else{
+
                 $label_status = '
-                    <span class="badge bg-danger-subtle text-danger">Inactive</span>
+                    <span class="badge bg-danger-subtle text-danger">
+                        Inactive
+                    </span>
                 ';
+
                 $tombol_lanjutan = '
                     <li>
                         <a 
@@ -301,9 +333,9 @@
                             href="javascript:void(0);"
                             data-bs-toggle="modal"
                             data-bs-target="#ModalActive"
-                            data-id="'.$id_simpanan_reference.'">
+                            data-id="'.$id_pinjaman_jenis.'">
 
-                            <i class="bi bi-indent"></i> Active
+                            <i class="bi bi-play-circle"></i> Active
                         </a>
                     </li>
                 ';
@@ -319,28 +351,34 @@
                         <a href="javascript:void(0);" 
                             data-bs-toggle="modal" 
                             data-bs-target="#ModalDetail" 
-                            data-id="'.$id_simpanan_reference.'">
+                            data-id="'.$id_pinjaman_jenis.'">
                             <small class="text text-primary text-decoration-underline">
-                                '.$simpanan_nama.'
+                                '.$nama_pinjaman.'
                             </small>
                         </a>
                     </td>
 
                     <td>
                         <small class="text text-grayish">
-                            '.$simpanan_kategori.'
-                        </small>
-                    </td>
-
-                    <td>
-                        <small class="text text-grayish">
-                            '.$periode_pembayaran.'
-                        </small>
-                    </td>
-
-                    <td>
-                        <small class="text text-grayish">
                             '.$nominal_rupiah.'
+                        </small>
+                    </td>
+
+                    <td>
+                        <small class="text text-grayish">
+                            '.$periode_angsuran.' Bulan
+                        </small>
+                    </td>
+
+                    <td>
+                        <small class="text text-grayish">
+                            '.$persen_jasa.' %
+                        </small>
+                    </td>
+
+                    <td>
+                        <small class="text text-grayish">
+                            '.$label_denda.'
                         </small>
                     </td>
 
@@ -366,7 +404,7 @@
                                     href="javascript:void(0);"
                                     data-bs-toggle="modal"
                                     data-bs-target="#ModalDetail"
-                                    data-id="'.$id_simpanan_reference.'">
+                                    data-id="'.$id_pinjaman_jenis.'">
 
                                     <i class="bi bi-info-circle"></i> Detail
                                 </a>
@@ -378,7 +416,7 @@
                                     href="javascript:void(0);"
                                     data-bs-toggle="modal"
                                     data-bs-target="#ModalEdit"
-                                    data-id="'.$id_simpanan_reference.'">
+                                    data-id="'.$id_pinjaman_jenis.'">
 
                                     <i class="bi bi-pencil"></i> Edit
                                 </a>
@@ -392,7 +430,7 @@
                                     href="javascript:void(0);"
                                     data-bs-toggle="modal"
                                     data-bs-target="#ModalHapus"
-                                    data-id="'.$id_simpanan_reference.'">
+                                    data-id="'.$id_pinjaman_jenis.'">
 
                                     <i class="bi bi-trash"></i> Hapus
                                 </a>

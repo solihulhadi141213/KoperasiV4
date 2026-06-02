@@ -18,8 +18,8 @@
         exit;
     }
 
-    // Validasi id_simpanan_reference
-    if(empty($_POST['id_simpanan_reference'])){
+    // Validasi id_pinjaman_jenis
+    if(empty($_POST['id_pinjaman_jenis'])){
         echo '
             <div class="alert alert-danger text-center mb-2">
                 <small>
@@ -32,10 +32,10 @@
     }
 
     // Variabel And Sanitazer
-    $id_simpanan_reference=validateAndSanitizeInput($_POST['id_simpanan_reference']);
+    $id_pinjaman_jenis=validateAndSanitizeInput($_POST['id_pinjaman_jenis']);
 
     // Open Data With Prepared Statmnet
-    $Qry = $Conn->prepare("SELECT*FROM simpanan_reference WHERE id_simpanan_reference = ? LIMIT 1");
+    $Qry = $Conn->prepare("SELECT*FROM pinjaman_jenis WHERE id_pinjaman_jenis = ? LIMIT 1");
     if (!$Qry) {
         echo '
             <div class="alert alert-danger text-center mb-2">
@@ -48,7 +48,7 @@
         ';
         exit;
     }
-    $Qry->bind_param("i", $id_simpanan_reference);
+    $Qry->bind_param("i", $id_pinjaman_jenis);
     if (!$Qry->execute()) {
         echo '
             <div class="alert alert-danger text-center mb-2">
@@ -77,21 +77,36 @@
         $Qry->close();
         exit;
     }
-    $Data                = $Result->fetch_assoc();
-    $simpanan_nama       = htmlspecialchars($Data['simpanan_nama']);
-    $simpanan_kategori   = htmlspecialchars($Data['simpanan_kategori']);
-    $simpanan_keterangan = htmlspecialchars($Data['simpanan_keterangan']);
-    $periode_pembayaran  = $Data['periode_pembayaran'] ?? '-';
-    $status              = htmlspecialchars($Data['status']);
+    $Data             = $Result->fetch_assoc();
+    $nama_pinjaman    = htmlspecialchars($Data['nama_pinjaman']);
+    $denda_metode     = $Data['denda_metode'] ?? '-';
+    $status           = htmlspecialchars($Data['status']);
     
-    // Routing Nominal
-    if(empty($Data['nominal'])){
-        $nominal = 0;
+    // Routing Int dan Decimal
+    if(empty($Data['periode_angsuran'])){
+        $periode_angsuran = 0;
     }else{
-        $nominal = htmlspecialchars($Data['nominal']);
+        $periode_angsuran = $Data['periode_angsuran'];
     }
+    if(empty($Data['persen_jasa'])){
+        $persen_jasa = 0;
+    }else{
+        $persen_jasa = $Data['persen_jasa'];
+    }
+    if(empty($Data['nominal_pinjaman'])){
+        $nominal_pinjaman = 0;
+    }else{
+        $nominal_pinjaman = $Data['nominal_pinjaman'];
+    }
+    if(empty($Data['denda_nominal'])){
+        $denda_nominal = 0;
+    }else{
+        $denda_nominal = $Data['denda_nominal'];
+    }
+
     // Nominal Rupiah
-    $nominal_rupiah = "Rp " . number_format($nominal, 0, ',', '.');
+    $nominal_pinjaman = "Rp " . number_format($nominal_pinjaman, 0, ',', '.');
+    $denda_nominal    = "Rp " . number_format($denda_nominal, 0, ',', '.');
 
     // Routing Status
     if($status==1){
@@ -107,54 +122,63 @@
     $Qry->close();
 ?>
     <div class="row mb-2">
-        <div class="col-6"><small>Nama Simpanan</small></div>
+        <div class="col-4"><small>Nama Pinjaman</small></div>
         <div class="col-1"><small>:</small></div>
-        <div class="col-5">
+        <div class="col-7">
             <small class="text-grayish">
-                <?php echo "$simpanan_nama"; ?>
+                <?php echo "$nama_pinjaman"; ?>
             </small>
         </div>
     </div>
     <div class="row mb-2">
-        <div class="col-6"><small>Kategori</small></div>
+        <div class="col-4"><small>Nominal</small></div>
         <div class="col-1"><small>:</small></div>
-        <div class="col-5">
+        <div class="col-7">
             <small class="text-grayish">
-                <?php echo "$simpanan_kategori"; ?>
+                <?php echo "$nominal_pinjaman"; ?>
             </small>
         </div>
     </div>
     <div class="row mb-2">
-        <div class="col-6"><small>Keterangan</small></div>
+        <div class="col-4"><small>Periode Angsuran</small></div>
         <div class="col-1"><small>:</small></div>
-        <div class="col-5">
+        <div class="col-7">
             <small class="text-grayish">
-                <?php echo "$simpanan_keterangan"; ?>
+                <?php echo "$periode_angsuran Bulan"; ?>
             </small>
         </div>
     </div>
     <div class="row mb-2">
-        <div class="col-6"><small>Periode Pembayaran</small></div>
+        <div class="col-4"><small>Jasa</small></div>
         <div class="col-1"><small>:</small></div>
-        <div class="col-5">
+        <div class="col-7">
             <small class="text-grayish">
-                <?php echo "$periode_pembayaran"; ?>
+                <?php echo "$persen_jasa %"; ?>
             </small>
         </div>
     </div>
     <div class="row mb-2">
-        <div class="col-6"><small>Nominal</small></div>
+        <div class="col-4"><small>Metode Denda</small></div>
         <div class="col-1"><small>:</small></div>
-        <div class="col-5">
+        <div class="col-7">
             <small class="text-grayish">
-                <?php echo "$nominal_rupiah"; ?>
+                <?php echo "$denda_metode"; ?>
             </small>
         </div>
     </div>
     <div class="row mb-2">
-        <div class="col-6"><small>Status</small></div>
+        <div class="col-4"><small>Nominal Denda</small></div>
         <div class="col-1"><small>:</small></div>
-        <div class="col-5">
+        <div class="col-7">
+            <small class="text-grayish">
+                <?php echo "$denda_nominal"; ?>
+            </small>
+        </div>
+    </div>
+    <div class="row mb-2">
+        <div class="col-4"><small>Status</small></div>
+        <div class="col-1"><small>:</small></div>
+        <div class="col-7">
             <?php echo "$label_status"; ?>
         </div>
     </div>
