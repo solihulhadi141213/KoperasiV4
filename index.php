@@ -35,6 +35,7 @@
                 "AksesEntitas"        => "Entitas Akses",
                 "Akses"               => "Akses Pengguna",
                 "Anggota"             => "Anggota",
+                "JenisSimpanan"       => "Jenis Simpanan",
                 "SettingGeneral"      => "Pengaturan Umum",
                 "SettingEmailGateway" => "Email Gateway",
             ];

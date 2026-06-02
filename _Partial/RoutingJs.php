@@ -12,6 +12,7 @@
             "AksesEntitas"        => "_Page/AksesEntitas/AksesEntitas.js",
             "Akses"               => "_Page/Akses/Akses.js",
             "Anggota"             => "_Page/Anggota/Anggota.js",
+            "JenisSimpanan"       => "_Page/JenisSimpanan/JenisSimpanan.js",
             "SettingGeneral"      => "_Page/SettingGeneral/SettingGeneral.js",
             "SettingEmailGateway" => "_Page/SettingEmailGateway/SettingEmailGateway.js",
         ];

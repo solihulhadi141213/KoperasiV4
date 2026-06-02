@@ -11,6 +11,7 @@
             "AksesEntitas"        => "_Page/AksesEntitas/AksesEntitas.php",
             "Akses"               => "_Page/Akses/Akses.php",
             "Anggota"             => "_Page/Anggota/Anggota.php",
+            "JenisSimpanan"       => "_Page/JenisSimpanan/JenisSimpanan.php",
             "SettingGeneral"      => "_Page/SettingGeneral/SettingGeneral.php",
             "SettingEmailGateway" => "_Page/SettingEmailGateway/SettingEmailGateway.php",
             "Error"               => "_Page/Error/Error.php"
