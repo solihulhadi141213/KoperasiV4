@@ -37,6 +37,7 @@
                 "Anggota"             => "Anggota",
                 "JenisSimpanan"       => "Jenis Simpanan",
                 "JenisPinjaman"       => "Jenis Pinjaman",
+                "Supplier"            => "Supplier",
                 "SettingGeneral"      => "Pengaturan Umum",
                 "SettingEmailGateway" => "Email Gateway",
             ];

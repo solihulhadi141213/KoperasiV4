@@ -13,6 +13,7 @@
             "Anggota"             => "_Page/Anggota/Anggota.php",
             "JenisSimpanan"       => "_Page/JenisSimpanan/JenisSimpanan.php",
             "JenisPinjaman"       => "_Page/JenisPinjaman/JenisPinjaman.php",
+            "Supplier"            => "_Page/Supplier/Supplier.php",
             "SettingGeneral"      => "_Page/SettingGeneral/SettingGeneral.php",
             "SettingEmailGateway" => "_Page/SettingEmailGateway/SettingEmailGateway.php",
             "Error"               => "_Page/Error/Error.php"

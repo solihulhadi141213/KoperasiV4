@@ -12,6 +12,7 @@
             "Anggota"        => "_Page/Anggota/ModalAnggota.php",
             "JenisSimpanan"  => "_Page/JenisSimpanan/ModalJenisSimpanan.php",
             "JenisPinjaman"  => "_Page/JenisPinjaman/ModalJenisPinjaman.php",
+            "Supplier"       => "_Page/Supplier/ModalSupplier.php",
             "SettingGeneral" => "_Page/SettingGeneral/ModalSettingGeneral.php",
         ];
 
