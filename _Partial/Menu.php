@@ -39,8 +39,10 @@
             <a class="nav-link 
                 <?php 
                     if(
+                        $Page == "KategoriHarga"||
                         $Page == "Barang"||
                         $Page == "BarangExpired"||
+                        $Page == "Diskon"||
                         $Page == "StockOpename"
                     ){echo "";}else{echo "collapsed";} 
                 ?>
@@ -48,7 +50,12 @@
                 <i class="bi bi-box-seam"></i>
                 <span>Barang</span><i class="bi bi-chevron-down ms-auto"></i>
             </a>
-            <ul id="icons2-nav" class="nav-content collapse <?php if($Page=="Barang"||$Page=="BarangExpired"||$Page=="StockOpename"||$Page=="Supplier"){echo "show";} ?>" data-bs-parent="#sidebar-nav">
+            <ul id="icons2-nav" class="nav-content collapse <?php if($Page=="KategoriHarga"||$Page=="Barang"||$Page=="BarangExpired"||$Page=="StockOpename"||$Page=="Supplier"){echo "show";} ?>" data-bs-parent="#sidebar-nav">
+                <li>
+                    <a href="index.php?Page=KategoriHarga" class="<?php if($Page=="KategoriHarga"){echo "active";} ?>">
+                        <i class="bi bi-circle"></i><span>Kategori Harga</span>
+                    </a>
+                </li>
                 <li>
                     <a href="index.php?Page=Barang" class="<?php if($Page=="Barang"){echo "active";} ?>">
                         <i class="bi bi-circle"></i><span>Master Barang</span>
@@ -57,6 +64,11 @@
                 <li>
                     <a href="index.php?Page=BarangExpired" class="<?php if($Page=="BarangExpired"){echo "active";} ?>">
                         <i class="bi bi-circle"></i><span>Batch & Expired</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="index.php?Page=Diskon" class="<?php if($Page=="Diskon"){echo "active";} ?>">
+                        <i class="bi bi-circle"></i><span>Diskon</span>
                     </a>
                 </li>
                 <li>
