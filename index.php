@@ -38,6 +38,8 @@
                 "JenisSimpanan"       => "Jenis Simpanan",
                 "JenisPinjaman"       => "Jenis Pinjaman",
                 "Supplier"            => "Supplier",
+                "KategoriHarga"       => "Kategori Harga",
+                "Barang"              => "Master Barang",
                 "SettingGeneral"      => "Pengaturan Umum",
                 "SettingEmailGateway" => "Email Gateway",
             ];

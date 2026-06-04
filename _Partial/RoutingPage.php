@@ -15,6 +15,7 @@
             "JenisPinjaman"       => "_Page/JenisPinjaman/JenisPinjaman.php",
             "Supplier"            => "_Page/Supplier/Supplier.php",
             "KategoriHarga"       => "_Page/KategoriHarga/KategoriHarga.php",
+            "Barang"              => "_Page/Barang/Barang.php",
             "SettingGeneral"      => "_Page/SettingGeneral/SettingGeneral.php",
             "SettingEmailGateway" => "_Page/SettingEmailGateway/SettingEmailGateway.php",
             "Error"               => "_Page/Error/Error.php"

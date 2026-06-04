@@ -16,6 +16,7 @@
             "JenisPinjaman"       => "_Page/JenisPinjaman/JenisPinjaman.js",
             "Supplier"            => "_Page/Supplier/Supplier.js",
             "KategoriHarga"       => "_Page/KategoriHarga/KategoriHarga.js",
+            "Barang"              => "_Page/Barang/Barang.js",
             "SettingGeneral"      => "_Page/SettingGeneral/SettingGeneral.js",
             "SettingEmailGateway" => "_Page/SettingEmailGateway/SettingEmailGateway.js",
         ];

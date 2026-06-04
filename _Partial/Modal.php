@@ -14,6 +14,7 @@
             "JenisPinjaman"  => "_Page/JenisPinjaman/ModalJenisPinjaman.php",
             "Supplier"       => "_Page/Supplier/ModalSupplier.php",
             "KategoriHarga"  => "_Page/KategoriHarga/ModalKategoriHarga.php",
+            "Barang"         => "_Page/Barang/ModalBarang.php",
             "SettingGeneral" => "_Page/SettingGeneral/ModalSettingGeneral.php",
         ];
 

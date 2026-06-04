@@ -3,9 +3,13 @@
     "apexcharts": "^5.13.0",
     "bootstrap": "^5.3.8",
     "bootstrap-icons": "^1.13.1",
+    "html2canvas": "^1.4.1",
     "jquery": "^4.0.0",
     "jquery-mask-plugin": "^1.14.16",
+    "jsbarcode": "^3.12.3",
+    "jspdf": "^4.2.1",
     "mdb-ui-kit": "^9.3.0",
+    "qrcode": "^1.5.4",
     "select2": "^4.0.13",
     "sweetalert2": "^11.26.24",
     "tom-select": "^2.6.1"

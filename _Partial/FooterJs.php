@@ -18,6 +18,12 @@
     }
 ?>
 
+<!-- Untuk Cetak Langsung Dari HTML Dengan JS -->
+<script src="node_modules/html2canvas/dist/html2canvas.min.js"></script>
+
+<!-- Membuat PDF Dengan JS -->
+<script src="node_modules/jspdf/dist/jspdf.umd.min.js"></script>
+
 <!-- Numerical -->
 <script type="text/javascript">
     $(document).ready(function(){
