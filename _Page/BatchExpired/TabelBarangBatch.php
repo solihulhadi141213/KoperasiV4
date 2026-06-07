@@ -137,33 +137,44 @@
     // =========================================================
     // FILTER KEYWORD
     // =========================================================
-    if (!empty($keyword)) {
-
-        $keywordLike = "%" . $keyword . "%";
+    if ($keyword !== '') {
 
         if (!empty($keyword_by)) {
 
             $FilterColumn = $columnMap[$keyword_by];
 
-            $where .= " AND $FilterColumn LIKE ? ";
+            // Status menggunakan =
+            if ($keyword_by == 'status') {
 
-            $bindTypes .= "s";
-            $bindValues[] = $keywordLike;
+                $where .= " AND $FilterColumn = ? ";
+
+                $bindTypes .= "i";
+                $bindValues[] = (int)$keyword;
+
+            } else {
+
+                $keywordLike = "%" . $keyword . "%";
+
+                $where .= " AND $FilterColumn LIKE ? ";
+
+                $bindTypes .= "s";
+                $bindValues[] = $keywordLike;
+            }
 
         } else {
+
+            $keywordLike = "%" . $keyword . "%";
 
             $where .= "
                 AND (
                     no_batch LIKE ?
                     OR expired_date LIKE ?
                     OR reminder_date LIKE ?
-                    OR status LIKE ?
                 )
             ";
 
-            $bindTypes .= "ssss";
+            $bindTypes .= "sss";
 
-            $bindValues[] = $keywordLike;
             $bindValues[] = $keywordLike;
             $bindValues[] = $keywordLike;
             $bindValues[] = $keywordLike;
