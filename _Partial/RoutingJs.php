@@ -17,6 +17,7 @@
             "Supplier"            => "_Page/Supplier/Supplier.js",
             "KategoriHarga"       => "_Page/KategoriHarga/KategoriHarga.js",
             "Barang"              => "_Page/Barang/Barang.js",
+            "BatchExpired"        => "_Page/BatchExpired/BatchExpired.js",
             "SettingGeneral"      => "_Page/SettingGeneral/SettingGeneral.js",
             "SettingEmailGateway" => "_Page/SettingEmailGateway/SettingEmailGateway.js",
         ];

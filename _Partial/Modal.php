@@ -15,6 +15,7 @@
             "Supplier"       => "_Page/Supplier/ModalSupplier.php",
             "KategoriHarga"  => "_Page/KategoriHarga/ModalKategoriHarga.php",
             "Barang"         => "_Page/Barang/ModalBarang.php",
+            "BatchExpired"   => "_Page/BatchExpired/ModalBatchExpired.php",
             "SettingGeneral" => "_Page/SettingGeneral/ModalSettingGeneral.php",
         ];
 

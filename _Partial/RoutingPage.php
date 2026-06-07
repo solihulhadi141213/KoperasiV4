@@ -16,6 +16,7 @@
             "Supplier"            => "_Page/Supplier/Supplier.php",
             "KategoriHarga"       => "_Page/KategoriHarga/KategoriHarga.php",
             "Barang"              => "_Page/Barang/Barang.php",
+            "BatchExpired"        => "_Page/BatchExpired/BatchExpired.php",
             "SettingGeneral"      => "_Page/SettingGeneral/SettingGeneral.php",
             "SettingEmailGateway" => "_Page/SettingEmailGateway/SettingEmailGateway.php",
             "Error"               => "_Page/Error/Error.php"
@@ -28,7 +29,7 @@
         if (array_key_exists($Page, $page_arry)) { 
             include $page_arry[$Page]; 
         } else { 
-            include "_Page/Dashboard/Dashboard.php";
+            include "_Page/Error/Error.php";
         }
     }
 ?>

@@ -1633,3 +1633,35 @@ body .title_page_app {
         background: #fff;
         z-index: 10;
     }
+
+/* =======================================================
+  QR/BARCODE PREVIEW
+======================================================= */
+/* Container Preview */
+.preview-kode-batch {
+    border: 1px solid #000;
+    border-radius: 12px;
+    padding: 15px;
+    background-color: #fff;
+}
+
+/* Frame QR Code */
+.preview-kode-batch .qr-frame {
+    border: 1px solid #000;
+    border-radius: 8px;
+    padding: 8px;
+    display: inline-block;
+    background-color: #fff;
+}
+
+/* Nama Barang */
+.preview-kode-batch .name_of_product {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+/* Harga */
+.preview-kode-batch .price_of_product {
+    font-size: 12px;
+    color: #555;
+}

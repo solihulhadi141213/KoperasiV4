@@ -40,6 +40,7 @@
                 "Supplier"            => "Supplier",
                 "KategoriHarga"       => "Kategori Harga",
                 "Barang"              => "Master Barang",
+                "BatchExpired"        => "Batch & Expired",
                 "SettingGeneral"      => "Pengaturan Umum",
                 "SettingEmailGateway" => "Email Gateway",
             ];
