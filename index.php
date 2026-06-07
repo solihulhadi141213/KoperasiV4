@@ -41,6 +41,7 @@
                 "KategoriHarga"       => "Kategori Harga",
                 "Barang"              => "Master Barang",
                 "BatchExpired"        => "Batch & Expired",
+                "Diskon"              => "Diskon",
                 "SettingGeneral"      => "Pengaturan Umum",
                 "SettingEmailGateway" => "Email Gateway",
             ];

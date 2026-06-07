@@ -50,7 +50,17 @@
                 <i class="bi bi-box-seam"></i>
                 <span>Barang</span><i class="bi bi-chevron-down ms-auto"></i>
             </a>
-            <ul id="icons2-nav" class="nav-content collapse <?php if($Page=="KategoriHarga"||$Page=="Barang"||$Page=="BatchExpired"||$Page=="StockOpename"||$Page=="Supplier"){echo "show";} ?>" data-bs-parent="#sidebar-nav">
+            <ul id="icons2-nav" class="nav-content collapse 
+                <?php 
+                    if(
+                        $Page=="KategoriHarga"||
+                        $Page=="Barang"||
+                        $Page=="BatchExpired"||
+                        $Page=="Diskon"||
+                        $Page=="StockOpename"
+                    ){echo "show";} 
+                ?>
+                " data-bs-parent="#sidebar-nav">
                 <li>
                     <a href="index.php?Page=KategoriHarga" class="<?php if($Page=="KategoriHarga"){echo "active";} ?>">
                         <i class="bi bi-circle"></i><span>Kategori Harga</span>

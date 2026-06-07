@@ -18,6 +18,7 @@
             "KategoriHarga"       => "_Page/KategoriHarga/KategoriHarga.js",
             "Barang"              => "_Page/Barang/Barang.js",
             "BatchExpired"        => "_Page/BatchExpired/BatchExpired.js",
+            "Diskon"              => "_Page/Diskon/Diskon.js",
             "SettingGeneral"      => "_Page/SettingGeneral/SettingGeneral.js",
             "SettingEmailGateway" => "_Page/SettingEmailGateway/SettingEmailGateway.js",
         ];

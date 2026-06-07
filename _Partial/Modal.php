@@ -16,6 +16,7 @@
             "KategoriHarga"  => "_Page/KategoriHarga/ModalKategoriHarga.php",
             "Barang"         => "_Page/Barang/ModalBarang.php",
             "BatchExpired"   => "_Page/BatchExpired/ModalBatchExpired.php",
+            "Diskon"         => "_Page/Diskon/ModalDiskon.php",
             "SettingGeneral" => "_Page/SettingGeneral/ModalSettingGeneral.php",
         ];
 

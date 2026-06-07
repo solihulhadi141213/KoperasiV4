@@ -17,6 +17,7 @@
             "KategoriHarga"       => "_Page/KategoriHarga/KategoriHarga.php",
             "Barang"              => "_Page/Barang/Barang.php",
             "BatchExpired"        => "_Page/BatchExpired/BatchExpired.php",
+            "Diskon"              => "_Page/Diskon/Diskon.php",
             "SettingGeneral"      => "_Page/SettingGeneral/SettingGeneral.php",
             "SettingEmailGateway" => "_Page/SettingEmailGateway/SettingEmailGateway.php",
             "Error"               => "_Page/Error/Error.php"
