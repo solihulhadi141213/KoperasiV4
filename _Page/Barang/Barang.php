@@ -58,6 +58,7 @@
                                     <td><b><small>Nama Barang</small></b></td>
                                     <td><b><small>Kategori</small></b></td>
                                     <td><b><small>QTY</small></b></td>
+                                    <td><b><small>Satuan</small></b></td>
                                     <td><b><small>Harga Beli</small></b></td>
                                     <td><b><small>Harga Jual</small></b></td>
                                     <td class="text-center"><b>Status</b></td>
@@ -67,7 +68,7 @@
                             <tbody id="tabel_barang">
                                 <!-- Menampilkan Tabel -->
                                 <tr>
-                                    <td colspan="9" class="text-center">
+                                    <td colspan="10" class="text-center">
                                         <small class="text-danger">No Data</small>
                                     </td>
                                 </tr>

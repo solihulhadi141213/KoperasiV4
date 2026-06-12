@@ -17,7 +17,7 @@
             "status" => "error",
             "html"   => '
                 <tr>
-                    <td colspan="9" class="text-center text-danger">
+                    <td colspan="10" class="text-center text-danger">
                         <small>Sesi akses sudah berakhir. Silakan login ulang.</small>
                     </td>
                 </tr>
@@ -166,7 +166,7 @@
             "status" => "error",
             "html"   => '
                 <tr>
-                    <td colspan="9" class="text-center text-danger">
+                    <td colspan="10" class="text-center text-danger">
                         <small>Gagal mempersiapkan query count.</small>
                     </td>
                 </tr>
@@ -223,7 +223,7 @@
             "status" => "error",
             "html"   => '
                 <tr>
-                    <td colspan="9" class="text-center text-danger">
+                    <td colspan="10" class="text-center text-danger">
                         <small>Gagal mempersiapkan query data.</small>
                     </td>
                 </tr>
@@ -249,7 +249,7 @@
             "status" => "error",
             "html"   => '
                 <tr>
-                    <td colspan="9" class="text-center text-danger">
+                    <td colspan="10" class="text-center text-danger">
                         <small>Terjadi kesalahan saat mengambil data.</small>
                     </td>
                 </tr>
@@ -269,7 +269,7 @@
     if ($query->num_rows == 0) {
         $html .= '
             <tr>
-                <td colspan="9" class="text-center text-danger">
+                <td colspan="10" class="text-center text-danger">
                     <small>Tidak ada data yang ditampilkan.</small>
                 </td>
             </tr>
@@ -288,7 +288,7 @@
 
             $harga_beli_rupiah = "Rp " . number_format($harga_beli, 0, ',', '.');
             $harga_jual_rupiah = "Rp " . number_format($harga_jual, 0, ',', '.');
-            $stok_label        = rtrim(rtrim(number_format($stok, 2, ',', '.'), '0'), ',') . ' ' . $satuan;
+            $stok_label        = rtrim(rtrim(number_format($stok, 2, ',', '.'), '0'), ',') . ' ';
 
             if ($status == 1) {
                 $label_status = '
@@ -363,6 +363,10 @@
                     </td>
 
                     <td>
+                        <small class="text text-grayish">'.$satuan.'</small>
+                    </td>
+
+                    <td>
                         <small class="text text-grayish">'.$harga_beli_rupiah.'</small>
                     </td>
 
@@ -415,6 +419,18 @@
                                     data-id="'.$id_barang.'">
 
                                     <i class="bi bi-tag"></i> Multi Harga
+                                </a>
+                            </li>
+
+                            <li>
+                                <a
+                                    class="dropdown-item"
+                                    href="javascript:void(0);"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#ModalMultiSatuan"
+                                    data-id="'.$id_barang.'">
+
+                                    <i class="bi bi-box"></i> Multi Satuan
                                 </a>
                             </li>
 

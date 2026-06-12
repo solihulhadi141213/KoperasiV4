@@ -650,3 +650,169 @@
         </div>
     </div>
 </div>
+
+<!-- MULTI SATUAN -->
+<div class="modal fade" id="ModalMultiSatuan" tabindex="-1">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-dark">
+                    <i class="bi bi-box"></i> Multi Satuan
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row mb-3">
+                    <div class="col-12" id="FormMultiSatuan">
+                      <!-- Menampilkan Form Multi Satuan (Menampilkan Detail Barang Dan Tombol Multi Satuan) -->
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="table-responsive">
+                            <table class="table table-hover table-striped">
+                                <thead>
+                                    <tr>
+                                        <td class="text-center"><b><small>No</small></b></td>
+                                        <td><b><small>Satuan</small></b></td>
+                                        <td><b><small>Isi</small></b></td>
+                                        <td><b><small>Stok</small></b></td>
+                                        <td class="text-center"><b>Opsi</b></td>
+                                    </tr>
+                                </thead>
+                                <tbody id="TabelMultiSatuan">
+                                    <!-- Menampilkan Tabel -->
+                                    <tr>
+                                        <td colspan="5" class="text-center">
+                                            <small class="text-danger">No Data</small>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-dark" data-bs-dismiss="modal">
+                    <i class="bi bi-x-circle"></i> Tutup
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- MODAL TAMBAH MULTI SATUAN -->
+<div class="modal fade" id="ModalTambahMultiSatuan" tabindex="-1">
+    <div class="modal-dialog modal-md modal-dialog-centered">
+        <div class="modal-content bg-primary-subtle">
+
+            <form action="javascript:void(0);" id="ProsesTambahMultiSatuan">
+                <div class="modal-header">
+                    <h5 class="modal-title text-dark"><i class="bi bi-plus"></i> Tambah Multi Satuan</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                
+                <div class="modal-body">
+                    <div class="row mb-3">
+                        <div class="col-12" id="FormTambahMultiSatuan">
+
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-12" id="NotifikasiTambahMultiSatuan">
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary" id="ButtonTambahMultiSatuan">
+                        <i class="bi bi-save"></i> Simpan
+                    </button>
+                    <button type="button" class="btn btn-dark" data-bs-dismiss="modal">
+                        <i class="bi bi-x-circle"></i> Tutup
+                    </button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+
+<!-- MODAL EDIT MULTI SATUAN -->
+<div class="modal fade" id="ModalEditMultiSatuan" tabindex="-1">
+    <div class="modal-dialog modal-md modal-dialog-centered">
+        <div class="modal-content bg-warning-subtle">
+
+            <form action="javascript:void(0);" id="ProsesEditMultiSatuan">
+                <div class="modal-header">
+                    <h5 class="modal-title text-dark"><i class="bi bi-pencil"></i> Edit Multi Satuan</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                
+                <div class="modal-body">
+                    <div class="row mb-3">
+                        <div class="col-12" id="FormEditMultiSatuan">
+
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-12" id="NotifikasiEditMultiSatuan">
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary" id="ButtonEditMultiSatuan">
+                        <i class="bi bi-save"></i> Simpan
+                    </button>
+                    <button type="button" class="btn btn-dark" data-bs-dismiss="modal">
+                        <i class="bi bi-x-circle"></i> Tutup
+                    </button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+<!-- MODAL HAPUS MULTI SATUAN -->
+<div class="modal fade" id="ModalHapusMultiSatuan" tabindex="-1">
+    <div class="modal-dialog modal-sm modal-dialog-centered">
+        <div class="modal-content bg-danger-subtle">
+
+            <form action="javascript:void(0);" id="ProsesHapusMultiSatuan">
+                <div class="modal-header">
+                    <h5 class="modal-title text-dark"><i class="bi bi-trash"></i> Hapus Multi Satuan</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                
+                <div class="modal-body">
+                    <div class="row mb-3">
+                        <div class="col-12" id="FormHapusMultiSatuan">
+
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-12" id="NotifikasiHapusMultiSatuan">
+
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary" id="ButtonHapusMultiSatuan">
+                        <i class="bi bi-check"></i> Ya, Hapus
+                    </button>
+                    <button type="button" class="btn btn-dark" data-bs-dismiss="modal">
+                        <i class="bi bi-x-circle"></i> Tutup
+                    </button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>

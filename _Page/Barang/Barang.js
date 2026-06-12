@@ -43,6 +43,31 @@ $(document).ready(function() {
         });
     }
 
+    //Fungsi Menampilkan Data
+    function ShowTableMultiSatuan(id_barang) {
+
+        // Loading Table
+        $('#TabelMultiSatuan').html(`
+            <tr>
+                <td colspan="3" class="text-center">
+                    <div class="spinner-border text-primary spinner-border-sm"></div>
+                    Loading...
+                </td>
+            </tr>
+        `);
+
+        // Buka data Dengan Ajax
+        $.ajax({
+            type    : 'POST',
+            url     : '_Page/Barang/TabelMultiSatuan.php',
+            data    : {id_barang: id_barang},
+            success : function(response) {
+                $('#TabelMultiSatuan').html(response);
+            }
+        });
+    }
+
+
     // Function Untuk Inisialiasasi Tom Select Pada Form Edit
     function initTomSelectEdit(){
         if(document.getElementById('kategori_edit')){
@@ -1608,5 +1633,444 @@ $(document).ready(function() {
             }
         }, 1000);
     });
+
+    // --------------------------------------------------
+    // MULTI SATUAN
+    // --------------------------------------------------
+
+    //Menampilkan 'ModalMultiSatuan'
+    $('#ModalMultiSatuan').on('show.bs.modal', function (e) {
+
+        // Tangkap id_barang dari tombol yang memicu modal
+        var id_barang= $(e.relatedTarget).data('id');
+
+        // Form Multi Satuan
+        $('#FormMultiSatuan').html('');
+
+        // Tabel Multi Satuan
+        $('#TabelMultiSatuan').html('');
+
+        // Panggil Fungsi Menampilkan multi satuan
+        $('#TabelMultiSatuan').html(`
+            <tr>
+                <td colspan="3" class="text-center">
+                    <div class="spinner-border text-primary spinner-border-sm"></div>
+                    Loading...
+                </td>
+            </tr>
+        `);
+        $.ajax({
+            type   : 'POST',
+            url    : '_Page/Barang/TabelMultiSatuan.php',
+            data   : {id_barang: id_barang},
+            success: function(response) {
+                $('#TabelMultiSatuan').html(response);  
+            },
+            error: function() {
+                $('#TabelMultiSatuan').html(`
+                    <tr>
+                        <td colspan = "3" class = "text-center text-danger">
+                            Gagal memuat data
+                        </td>
+                    </tr>
+                `);
+            }
+        });
+
+        // Menampilkan Form Multi Satuan Dengan AJAX
+        $.ajax({
+            type   : 'POST',
+            url    : '_Page/Barang/FormMultiSatuan.php',
+            data   : {id_barang: id_barang},
+            success: function(response) {
+                $('#FormMultiSatuan').html(response);  
+            },
+            error: function() {
+                $('#FormMultiSatuan').html(`
+                    <tr>
+                        <td colspan = "3" class = "text-center text-danger">
+                            Gagal memuat data
+                        </td>
+                    </tr>
+                `);
+            }
+        });
+
+    });
+
+    // ------------------------------------------------
+    // TAMBAH MULTI SATUAN
+    // ------------------------------------------------
+
+    // Handle Menampilkan Modal Edit Multi satuan
+    $(document).on('click', '.modal_tambah_multi_satuan', function () {
+
+        // Tangkap id_barang
+        let id_barang = $(this).data('id');
+
+        // Triger Munculkan Modal
+        $('#ModalTambahMultiSatuan').modal('show');
+
+        // Bersihkan Notifikasi
+        $('#NotifikasiTambahMultiSatuan').html('');
+
+        // Loading Form
+        $('#FormTambahMultiSatuan').html('');
+
+        // Disable Button 'ButtonEditMultiSatuan'
+        $('#ButtonTambahMultiSatuan').prop('disabled', true);
+
+        // Buka Form Dengan AJAX
+        $.ajax({
+            type       : 'POST',
+            url        : '_Page/Barang/FormTambahMultiSatuan.php',
+            data       : {id_barang: id_barang},
+            success: function (response) {
+                $('#FormTambahMultiSatuan').html(response);
+
+                // Pada FormEditMultiSatuan.php akan melakukan enable button atau tidak. Tergantung apakah data berhasil di load atau tidak
+            }
+        });
+
+    });
+
+    // Handdle Proses Tambah
+    $('#ProsesTambahMultiSatuan').submit(function(e){
+        e.preventDefault();
+
+        // Reset notifikasi
+        $('#NotifikasiTambahMultiSatuan').html('');
+
+        // Tombol Submit
+        let tombol = $('#ButtonTambahMultiSatuan');
+
+        // Simpan html asli
+        let tombol_asli = tombol.html();
+
+        // Disable tombol
+        tombol.prop('disabled', true);
+
+        // Loading button
+        tombol.html(`<span class="spinner-border spinner-border-sm"></span>Loading...`);
+
+        // Ambil data form termasuk file
+        let formData = new FormData(this);
+
+        // Send To Ajax
+        $.ajax({
+            type       : 'POST',
+            url        : '_Page/Barang/ProsesTambahMultiSatuan.php',
+            data       : formData,
+            processData: false,
+            contentType: false,
+            dataType   : 'JSON',
+            success    : function(response){
+                console.log(response);
+
+                // Jika Berhasil
+                if(response.status == 'success'){
+
+                    let id_barang = response.id_barang;
+
+                    // Reset Notifikasi
+                    $('#NotifikasiTambahMultiSatuan').html(``);
+
+                    // Toast SweetAlert
+                    Swal.fire({
+                        toast            : true,
+                        position         : 'top-end',
+                        icon             : 'success',
+                        title            : response.message,
+                        showConfirmButton: false,
+                        timer            : 3000,
+                        timerProgressBar : true,
+                        didOpen          : (toast) => {
+
+                            toast.onmouseenter = Swal.stopTimer;
+                            toast.onmouseleave = Swal.resumeTimer;
+                        }
+                    });
+
+                    // Hide Modal
+                    $('#ModalTambahMultiSatuan').modal('hide');
+
+                    // Reload Tabel
+                    ShowTableMultiSatuan(id_barang);
+                }else{
+
+                    // Show Notification Error
+                    $('#NotifikasiTambahMultiSatuan').html(`<div class="alert alert-danger">${response.message}</div>`);
+                }
+            },
+
+            error: function(xhr, status, error){
+                // Consol
+                console.log("XHR:", xhr);
+                console.log("STATUS:", status);
+                console.log("ERROR:", error);
+                console.log("RESPONSE:", xhr.responseText);
+
+                // Tampilkan Notifikasi
+                $('#NotifikasiTambahMultiSatuan').html(`<div class="alert alert-danger">Terjadi kesalahan server.</div>`);
+            },
+
+            complete: function(){
+                // Kembalikan Tombol
+                tombol.prop('disabled', false);
+                tombol.html(tombol_asli);
+            }
+        });
+    });
+
+    
+
+    // ------------------------------------------------
+    // EDIT MULTI SATUAN
+    // ------------------------------------------------
+
+    // Handle Menampilkan Modal Edit Multi satuan
+    $(document).on('click', '.edit-multi-satuan', function () {
+
+        // Tangkap id_barang_satuan
+        let id_barang_satuan = $(this).data('id');
+
+        // Triger Munculkan Modal
+        $('#ModalEditMultiSatuan').modal('show');
+
+        // Bersihkan Notifikasi
+        $('#NotifikasiEditMultiSatuan').html('');
+
+        // Loading Form
+        $('#FormEditMultiSatuan').html('');
+
+        // Disable Button 'ButtonEditMultiSatuan'
+        $('#ButtonEditMultiSatuan').prop('disabled', true);
+
+        // Buka Form Dengan AJAX
+        $.ajax({
+            type       : 'POST',
+            url        : '_Page/Barang/FormEditMultiSatuan.php',
+            data       : {id_barang_satuan: id_barang_satuan},
+            success: function (response) {
+                $('#FormEditMultiSatuan').html(response);
+
+                // Pada FormEditMultiSatuan.php akan melakukan enable button atau tidak. Tergantung apakah data berhasil di load atau tidak
+            }
+        });
+
+    });
+
+    // Handdle Proses Edit
+    $('#ProsesEditMultiSatuan').submit(function(e){
+        e.preventDefault();
+
+        // Reset notifikasi
+        $('#NotifikasiEditMultiSatuan').html('');
+
+        // Tombol Submit
+        let tombol = $('#ButtonEditMultiSatuan');
+
+        // Simpan html asli
+        let tombol_asli = tombol.html();
+
+        // Disable tombol
+        tombol.prop('disabled', true);
+
+        // Loading button
+        tombol.html(`<span class="spinner-border spinner-border-sm"></span>Loading...`);
+
+        // Ambil data form termasuk file
+        let formData = new FormData(this);
+
+        // Send To Ajax
+        $.ajax({
+            type       : 'POST',
+            url        : '_Page/Barang/ProsesEditMultiSatuan.php',
+            data       : formData,
+            processData: false,
+            contentType: false,
+            dataType   : 'JSON',
+            success    : function(response){
+                console.log(response);
+
+                // Jika Berhasil
+                if(response.status == 'success'){
+
+                    let id_barang = response.id_barang;
+
+                    // Reset Notifikasi
+                    $('#NotifikasiEditMultiSatuan').html(``);
+
+                    // Toast SweetAlert
+                    Swal.fire({
+                        toast            : true,
+                        position         : 'top-end',
+                        icon             : 'success',
+                        title            : response.message,
+                        showConfirmButton: false,
+                        timer            : 3000,
+                        timerProgressBar : true,
+                        didOpen          : (toast) => {
+
+                            toast.onmouseenter = Swal.stopTimer;
+                            toast.onmouseleave = Swal.resumeTimer;
+                        }
+                    });
+
+                    // Hide Modal
+                    $('#ModalEditMultiSatuan').modal('hide');
+
+                    // Reload Tabel
+                    ShowTableMultiSatuan(id_barang);
+                }else{
+
+                    // Show Notification Error
+                    $('#NotifikasiEditMultiSatuan').html(`<div class="alert alert-danger">${response.message}</div>`);
+                }
+            },
+
+            error: function(xhr, status, error){
+                // Consol
+                console.log("XHR:", xhr);
+                console.log("STATUS:", status);
+                console.log("ERROR:", error);
+                console.log("RESPONSE:", xhr.responseText);
+
+                // Tampilkan Notifikasi
+                $('#NotifikasiTambahMultiSatuan').html(`<div class="alert alert-danger">Terjadi kesalahan server.</div>`);
+            },
+
+            complete: function(){
+                // Kembalikan Tombol
+                tombol.prop('disabled', false);
+                tombol.html(tombol_asli);
+            }
+        });
+    });
+
+    // ------------------------------------------------
+    // HAPUS MULTI SATUAN
+    // ------------------------------------------------
+
+    // Handle Menampilkan Modal Edit Multi satuan
+    $(document).on('click', '.delete-multi-satuan', function () {
+
+        // Tangkap id_barang_satuan
+        let id_barang_satuan = $(this).data('id');
+
+        // Triger Munculkan Modal
+        $('#ModalHapusMultiSatuan').modal('show');
+
+        // Bersihkan Notifikasi
+        $('#NotifikasiHapusMultiSatuan').html('');
+
+        // Loading Form
+        $('#FormHapusMultiSatuan').html('');
+
+        // Disable Button 'ButtonHapusMultiSatuan'
+        $('#ButtonHapusMultiSatuan').prop('disabled', true);
+
+        // Buka Form Dengan AJAX
+        $.ajax({
+            type       : 'POST',
+            url        : '_Page/Barang/FormHapusMultiSatuan.php',
+            data       : {id_barang_satuan: id_barang_satuan},
+            success: function (response) {
+                $('#FormHapusMultiSatuan').html(response);
+
+                // Pada FormHapusMultiSatuan.php akan melakukan enable button atau tidak. Tergantung apakah data berhasil di load atau tidak
+            }
+        });
+
+    });
+
+    // Handdle Proses Hapus
+    $('#ProsesHapusMultiSatuan').submit(function(e){
+        e.preventDefault();
+
+        // Reset notifikasi
+        $('#NotifikasiHapusMultiSatuan').html('');
+
+        // Tombol Submit
+        let tombol = $('#ButtonHapusMultiSatuan');
+
+        // Simpan html asli
+        let tombol_asli = tombol.html();
+
+        // Disable tombol
+        tombol.prop('disabled', true);
+
+        // Loading button
+        tombol.html(`<span class="spinner-border spinner-border-sm"></span>Loading...`);
+
+        // Ambil data form termasuk file
+        let formData = new FormData(this);
+
+        // Send To Ajax
+        $.ajax({
+            type       : 'POST',
+            url        : '_Page/Barang/ProsesHapusMultiSatuan.php',
+            data       : formData,
+            processData: false,
+            contentType: false,
+            dataType   : 'JSON',
+            success    : function(response){
+                console.log(response);
+
+                // Jika Berhasil
+                if(response.status == 'success'){
+
+                    let id_barang = response.id_barang;
+
+                    // Reset Notifikasi
+                    $('#NotifikasiHapusMultiSatuan').html(``);
+
+                    // Toast SweetAlert
+                    Swal.fire({
+                        toast            : true,
+                        position         : 'top-end',
+                        icon             : 'success',
+                        title            : response.message,
+                        showConfirmButton: false,
+                        timer            : 3000,
+                        timerProgressBar : true,
+                        didOpen          : (toast) => {
+
+                            toast.onmouseenter = Swal.stopTimer;
+                            toast.onmouseleave = Swal.resumeTimer;
+                        }
+                    });
+
+                    // Hide Modal
+                    $('#ModalHapusMultiSatuan').modal('hide');
+
+                    // Reload Tabel
+                    ShowTableMultiSatuan(id_barang);
+                }else{
+
+                    // Show Notification Error
+                    $('#NotifikasiHapusMultiSatuan').html(`<div class="alert alert-danger">${response.message}</div>`);
+                }
+            },
+
+            error: function(xhr, status, error){
+                // Consol
+                console.log("XHR:", xhr);
+                console.log("STATUS:", status);
+                console.log("ERROR:", error);
+                console.log("RESPONSE:", xhr.responseText);
+
+                // Tampilkan Notifikasi
+                $('#NotifikasiHapusMultiSatuan').html(`<div class="alert alert-danger">Terjadi kesalahan server.</div>`);
+            },
+
+            complete: function(){
+                // Kembalikan Tombol
+                tombol.prop('disabled', false);
+                tombol.html(tombol_asli);
+            }
+        });
+    });
+
     
 });
